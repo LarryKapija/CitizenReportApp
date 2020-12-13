@@ -1,6 +1,5 @@
-﻿using System;
+﻿using CiudApp.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace CiudApp
 {
