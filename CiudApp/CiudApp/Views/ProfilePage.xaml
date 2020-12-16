@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.ProfilePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Perfil" TextTransform="Uppercase" FontSize="Medium"
+                       Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Text="Editar" Grid.Row="0" Grid.Column="2"  />
+
+                <Frame Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" >
+                    <Label Text="Pedro Abinader" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
+
+                <Button Text="Actividades" Grid.Row="3" Grid.Column="0" />
+                <Button Text="Reportes" Grid.Row="3" Grid.Column="1" />
+                <Button Text="Compartir" Grid.Row="3" Grid.Column="2" />
+
+                <Frame Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="10" >
+                    <Label Text="Reportes" TextTransform="Uppercase" FontSize="Medium" />
+                </Frame>
+
+                <Entry Placeholder="Editar la información del perfil" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" />
+
+                <Label Text="Eventos" FontSize="Large" Grid.Row="7" Grid.Column="0" />
+
+                <Frame Grid.Row="8" Grid.Column="0" Grid.RowSpan="6" Grid.ColumnSpan="3" >
+                    
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
