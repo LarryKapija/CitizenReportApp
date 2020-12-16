@@ -27,8 +27,8 @@
                 <Label Text="Reporte" TextTransform="Uppercase" FontSize="Title" VerticalOptions="Center"
                        Grid.Row="0" Grid.Column="0" />
                 <Button Text="Elegir la ubicación actual" Grid.Row="1" Grid.ColumnSpan="2" 
-                        BackgroundColor="White" Padding="10" FontSize="Body"/>
-                <Button Text="Abrir Maps" Grid.Row="2" Grid.ColumnSpan="2"
+                        BackgroundColor="White" Padding="10" FontSize="Body" HorizontalOptions="Start"/>
+                <Button Text="Abrir Maps" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalOptions="Start"
                         BackgroundColor="White" Padding="10" FontSize="Body" />
 
                 <Label Text="Categoría" FontSize="Large" Grid.Row="3" Grid.Column="0" />
