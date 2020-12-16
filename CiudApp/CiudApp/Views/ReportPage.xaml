@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.ReportPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Reporte" TextTransform="Uppercase" FontSize="Title" VerticalOptions="Center"
+                       Grid.Row="0" Grid.Column="0" />
+                <Button Text="Elegir la ubicación actual" Grid.Row="1" Grid.ColumnSpan="2" 
+                        BackgroundColor="White" Padding="10" FontSize="Body"/>
+                <Button Text="Abrir Maps" Grid.Row="2" Grid.ColumnSpan="2"
+                        BackgroundColor="White" Padding="10" FontSize="Body" />
+
+                <Label Text="Categoría" FontSize="Large" Grid.Row="3" Grid.Column="0" />
+                <Entry Text="Evento" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+                <CheckBox Grid.Row="4" Grid.Column="2" HorizontalOptions="Center"/>
+
+                <Entry Text="Reporte" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" />
+                <CheckBox Grid.Row="5" Grid.Column="2" HorizontalOptions="Center" />
+
+                <Entry Text="Subtítulo 1" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" />
+                <CheckBox Grid.Row="6" Grid.Column="2" HorizontalOptions="Center" />
+
+                <Entry Text="Subtítulo 2" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" />
+                <CheckBox Grid.Row="7" Grid.Column="2" HorizontalOptions="Center" />
+
+                <Button Text="Agregar Multimedia" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" 
+                        BackgroundColor="White" Padding="10" FontSize="Body"/>
+
+                <Label Text="Descripción" FontSize="Large" Grid.Row="9" />
+
+                <Frame Grid.Row="11" Grid.Column="1" HorizontalOptions="Center" >
+                    <Label Text="Completar ->" />
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
