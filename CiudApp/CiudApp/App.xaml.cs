@@ -1,4 +1,5 @@
 ﻿using CiudApp.Views;
+using CiudApp.Views.Pages;
 using Xamarin.Forms;
 
 namespace CiudApp

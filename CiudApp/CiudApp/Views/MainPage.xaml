@@ -2,16 +2,25 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="CiudApp.Views.MainPage"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom">
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:local="clr-namespace:CiudApp.Views.Pages"
+            android:TabbedPage.ToolbarPlacement="Bottom" 
+            Title="MainTabbedPage">
   <!--Pages can be added as references or inline-->
-    
 
-    <ContentPage Title="Inicio" ></ContentPage>
+
+    <NavigationPage Title="Inicio" >
+        <x:Arguments>
+            <local:HomePage/>
+        </x:Arguments>
+    </NavigationPage>
     
     
-    <ContentPage Title="Reportar" ></ContentPage>
+    <NavigationPage Title="Reportar" ></NavigationPage>
     
     
-    <ContentPage Title="Calendario" ></ContentPage>
+    <NavigationPage Title="Calendario"  >
+        <x:Arguments>
+            <local:CalendarPage/>
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>
