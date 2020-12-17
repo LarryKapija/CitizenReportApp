@@ -9,7 +9,7 @@ namespace CiudApp
         {
             InitializeComponent();
 
-            MainPage = new ProfilePage();
+            MainPage = new ReportPage();
         }
 
         protected override void OnStart()
