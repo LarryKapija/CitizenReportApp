@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.CalendarPage"
+             Title="Calendario">
+    <Grid RowDefinitions="*,Auto,Auto" ColumnDefinitions="*,*,*" >
+
+        <Frame Grid.ColumnSpan="3">
+            <ListView x:Name="Eventos">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell                                     
+                                    Height="50" 
+                                    Text="" 
+                                    Detail="" 
+                                    ImageSource="" >
+
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Frame>
+
+        <Label Text="Eventos del dia" Grid.Row="1" Grid.ColumnSpan="2" FontSize="Large" Margin="10,10,0,40"/>
+
+        <Button Grid.Row="2" Grid.ColumnSpan="3" Margin="20,0" Text="Agregar evento" HeightRequest="60" />
+    </Grid>
+</ContentPage>

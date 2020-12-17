@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CiudApp.Views.ReportPage">
-    <ContentPage.Content>
+             x:Class="CiudApp.Views.ReportPage"
+             Title="Reportes">
+
         <ScrollView>
             <Grid Margin="30, 10, 0, 10">
                 <Grid.RowDefinitions>
@@ -27,9 +28,9 @@
                 <Label Text="Reporte" TextTransform="Uppercase" FontSize="Title" VerticalOptions="Center"
                        Grid.Row="0" Grid.Column="0" />
                 <Button Text="Elegir la ubicación actual" Grid.Row="1" Grid.ColumnSpan="2" 
-                        Style="{StaticResource ButtonStyle}"/>
+                        />
                 <Button Text="Abrir Maps" Grid.Row="2" Grid.ColumnSpan="2"  
-                        Style="{StaticResource ButtonStyle}"/>
+                        />
 
                 <Label Text="Categoría" FontSize="Large" Grid.Row="3" Grid.Column="0" />
                 <Entry Text="Evento" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
@@ -45,16 +46,16 @@
                 <CheckBox Grid.Row="7" Grid.Column="2" HorizontalOptions="Center" />
 
                 <Button Text="Agregar Multimedia" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" 
-                        Style="{StaticResource ButtonStyle}"/>
+                        />
 
                 <Label Text="Descripción" FontSize="Large" Grid.Row="9" />
 
-                <Editor Grid.Row="10" Grid.Column="0" Style="{StaticResource EditorStyle}"/>
+                <Editor Grid.Row="10" Grid.Column="0" />
 
                 <Frame Grid.Row="11" Grid.Column="1" HorizontalOptions="Center" >
                     <Label Text="Completar ->" />
                 </Frame>
             </Grid>
         </ScrollView>
-    </ContentPage.Content>
+
 </ContentPage>
