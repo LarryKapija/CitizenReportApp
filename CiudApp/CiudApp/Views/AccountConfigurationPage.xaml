@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.AccountConfigurationPage">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,*" ColumnDefinitions="*,*,*,*">
+            <Frame Grid.ColumnSpan="4">
+                <Label Text="PERFIL"/>
+            </Frame>
+
+            <Label Grid.Row="1" Grid.ColumnSpan="4" Text="Configuracion de la cuenta" FontSize="Large"/>
+
+            <Image Grid.Row="2" Grid.ColumnSpan="4"/>
+            <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+
+            <Label Grid.Row="3" Grid.ColumnSpan="4" Text="Informacion de la cuenta" FontSize="Large"/>
+
+            <Frame Grid.Row="4" Grid.ColumnSpan="4" >
+                <StackLayout>
+                    <Label Text="Informacion Basica" FontSize="Large"/>
+
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
+                        <Label Text="Nombre de usuario" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Pedro Abinader" Grid.Row="1"/>
+
+                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
+                    </Grid>
+
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
+                        <Label Text="Correo electronico" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="example@mail.com" Grid.Row="1"/>
+
+                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
+                    </Grid>
+
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto" >
+                        <Label Text="Numero de telefono" FontSize="Medium" FontAttributes="Bold" Grid.ColumnSpan="2" />
+                        <Label Text="829-888-8888" Grid.Row="1"/>
+
+                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
+                        <Button Grid.RowSpan="2" Grid.Column="2" VerticalOptions="End"/>
+                    </Grid>
+
+                </StackLayout>
+            </Frame>
+
+
+            <Frame Grid.Row="5" Grid.ColumnSpan="4" >
+                <StackLayout >
+                    <Label Text="Informacion Complementaria" FontSize="Large"/>
+
+
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
+                        <Label Text="Sitio web" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="www.misitio.com" Grid.Row="1"/>
+
+                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
+                    </Grid>
+
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
+                        <Label Text="Presentacion" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Soy un tipo bueno" Grid.Row="1"/>
+
+                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
+                    </Grid>
+
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto" >
+                        <Label Text="Direccion" FontSize="Medium" FontAttributes="Bold" Grid.ColumnSpan="2" />
+                        <Label Text="Mi casa" Grid.Row="1"/>
+
+                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
+                        <Button Grid.RowSpan="2" Grid.Column="2" VerticalOptions="End"/>
+                    </Grid>
+
+                </StackLayout>
+            </Frame>
+
+
+
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

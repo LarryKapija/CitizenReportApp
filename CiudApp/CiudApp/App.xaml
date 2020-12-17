@@ -1,18 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CiudApp.App">
+             x:Class="CiudApp.App"
+             xmlns:prism="http://prismlibrary.com">
     <Application.Resources>
-        <ResourceDictionary>
-            <Style x:Key="ButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="FontSize" Value="Small" />
-                <Setter Property="HorizontalOptions" Value="Start" />
-            </Style>
 
-            <Style x:Key="EditorStyle" TargetType="Editor">
-                <Setter Property="Grid.ColumnSpan" Value="3" />
-            </Style>
-        </ResourceDictionary>
     </Application.Resources>
-</Application>
+</prism:PrismApplication>
