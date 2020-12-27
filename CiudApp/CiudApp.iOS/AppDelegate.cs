@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Plugin.GoogleClient;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -25,10 +26,28 @@ namespace CiudApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            GoogleClientManager.Initialize(); //For the Google auth.
+
             LoadApplication(new App(new IosInitializer()));
 
             return base.FinishedLaunching(app, options);
         }
+
+        #region OpenUrl
+        /// <summary>
+        /// This method is override to complete de auth of google API in the Android Project.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="url"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            return GoogleClientManager.OnOpenUrl(app, url, options);
+        }
+        #endregion
+
         public class IosInitializer : IPlatformInitializer
         {
             public void RegisterTypes(IContainerRegistry containerRegistry)
