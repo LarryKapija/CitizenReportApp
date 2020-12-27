@@ -30,6 +30,7 @@ namespace CiudApp
         {
         }
 
+        #region RegisterTypes
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
 
@@ -45,10 +46,13 @@ namespace CiudApp
             #endregion
 
         }
+        #endregion
 
+        #region OnInitialized
         protected override async void OnInitialized()
         {
             await NavigationService.NavigateAsync(pages.MainPage);
         }
+        #endregion
     }
 }

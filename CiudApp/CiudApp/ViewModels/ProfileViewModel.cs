@@ -6,26 +6,24 @@ using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
 {
-    class ProfileViewModel
+    class ProfileViewModel : BaseViewModel
     {
-        
-        public INavigationService _navigationService;
-
-        public ProfileViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-
-            ConfigurationCommand = new Command(async (page) => await Navigation(page.ToString()));
-        }
-
         #region Command
-        public ICommand ConfigurationCommand{get;}
+        public ICommand ConfigurationCommand { get; }
         #endregion
 
-        #region Functions
-        async Task Navigation(string page)
+        //Functions:
+        #region ProfileViewModel
+        public ProfileViewModel(INavigationService navigationService) : base(navigationService)
         {
-            await _navigationService.NavigateAsync(page);
+            ConfigurationCommand = new Command(async (page) => await Navigate(page.ToString()));
+        }
+        #endregion
+
+        #region Navigate
+        async Task Navigate(string page)
+        {
+            await NavigationService.NavigateAsync(page);
         }
         #endregion
     }

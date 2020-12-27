@@ -9,26 +9,24 @@ using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
 {
-    class MainViewModel
+    class MainViewModel : BaseViewModel
     {
-        
-        public INavigationService _navigationService;
-        public MainViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-
-            NavegateCommand = new Command(async (pagina) => await Navigate(pagina.ToString()));
-        }
-
-
         #region Commands
         public ICommand NavegateCommand { get; }
         #endregion
 
-        #region Functions
+        //Functions:
+        #region MainViewModel
+        public MainViewModel(INavigationService navigationService) : base(navigationService)
+        {
+            NavegateCommand = new Command(async (page) => await Navigate(page.ToString()));
+        }
+        #endregion
+
+        #region Navigate
         async Task Navigate(string page)
         {
-            await _navigationService.NavigateAsync(page);
+            await NavigationService.NavigateAsync(page);
         }
         #endregion
     }

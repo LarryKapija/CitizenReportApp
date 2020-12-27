@@ -6,25 +6,26 @@ using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
 {
-    public class HomeViewModel
+    public class HomeViewModel : BaseViewModel
     {
-        public INavigationService _navigationService;
-        public HomeViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-
-            NavegateCommand = new Command(async () => await Navigate());
-        }
-
-
         #region Commands
         public ICommand NavegateCommand { get;  }
         #endregion
 
-        #region Functions
+        //Functions:
+        #region HomeViewModel
+        public HomeViewModel(INavigationService navigationService) : base(navigationService)
+        {
+            //_navigationService = navigationService;
+
+            NavegateCommand = new Command(async () => await Navigate());
+        }
+        #endregion
+
+        #region Navigate
         async Task Navigate()
         {
-            await _navigationService.NavigateAsync("Profile");
+            await NavigationService.NavigateAsync("Profile");
         }
         #endregion
     }
