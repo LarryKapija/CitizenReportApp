@@ -35,10 +35,11 @@ namespace CiudApp
         {
 
             #region Pages
-            containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
+                containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
                 containerRegistry.RegisterForNavigation<AccountConfigurationPage, AccountConfigurationViewModel>("AccountConfiguration");
                 containerRegistry.RegisterForNavigation<CalendarPage, CalendarViewModel>("Calendar");
                 containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>("Home");
+                containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>("LogIn");
                 containerRegistry.RegisterForNavigation<MainPage, MainViewModel>("Main");
                 containerRegistry.RegisterForNavigation<NewEventPage, NewEventViewModel>("NewEvent");
                 containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>("Profile");
@@ -51,7 +52,7 @@ namespace CiudApp
         #region OnInitialized
         protected override async void OnInitialized()
         {
-            await NavigationService.NavigateAsync(pages.MainPage);
+            await NavigationService.NavigateAsync(pages.LogIn);
         }
         #endregion
     }
