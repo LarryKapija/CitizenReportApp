@@ -15,7 +15,7 @@
 
 
                 <Frame Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" >
-                    <Label Text="Pedro Abinader" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="{Binding name}" VerticalOptions="Center" HorizontalOptions="Center" />
                 </Frame>
 
                 <Button Text="Actividades" Grid.Row="3" Grid.Column="0" />

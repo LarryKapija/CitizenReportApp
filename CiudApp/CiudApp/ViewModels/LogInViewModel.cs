@@ -45,18 +45,17 @@ namespace CiudApp.ViewModels
             }
         }
 
-        IPageDialogService PageDialog; //For displaying alert.
+        INavigationService NavigationService;
 
-        User user;
+        internal User user { get; set; }
         #endregion
 
-        //Functions:
 
         #region LogInViewModel
-        public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialog) : base(navigationService)
+        public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService,pageDialogService)
         {
-            PageDialog = pageDialog;
-            user = new User();
+            NavigationService = navigationService;
+             user = new User();
             GoogleLogIn = new Command(async () => await GoogleCheck());
         }
         #endregion
@@ -73,27 +72,55 @@ namespace CiudApp.ViewModels
                 await CrossGoogleClient.Current.LoginAsync();
                 Label = user.Name;
                 Image = user.Picture;
+                await NavigationService.NavigateAsync($"/Home");
             }
-            catch (Exception e)
+            catch (GoogleClientSignInNetworkErrorException )
             {
-                await PageDialog.DisplayAlertAsync("Lo sentimos, no se puede completar la acción",
-                                            $"{e}", "Cancelar");
+                await PageDialog.DisplayAlertAsync("Error","Error de conexion, favor intentelo nuevamente." , "OK");
+            }
+            catch (GoogleClientSignInCanceledErrorException )
+            {
+                await PageDialog.DisplayAlertAsync("Error", "Solicitud cancelada", "OK");
+            }
+            catch (GoogleClientSignInInvalidAccountErrorException )
+            {
+                await PageDialog.DisplayAlertAsync("Error", "Cuenta invalida.", "OK");
+            }
+            catch (GoogleClientSignInInternalErrorException )
+            {
+                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 888-888-8888", "OK");
+            }
+            catch (GoogleClientNotInitializedErrorException )
+            {
+                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 888-888-8888", "OK");
+            }
+            catch (GoogleClientBaseException )
+            {
+                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 888-888-8888", "OK");
             }
 
         }
-        #endregion
 
-        private void OnLogInCompleted(object sender, GoogleClientResultEventArgs<GoogleUser> loginEventArgs)
+        private async void OnLogInCompleted(object sender, GoogleClientResultEventArgs<GoogleUser> loginEventArgs)
         {
-            if(loginEventArgs.Data != null)
+            if (loginEventArgs.Data != null)
             {
                 GoogleUser googleUser = loginEventArgs.Data;
                 user.Name = googleUser.Name;
+                user.GivenName = googleUser.GivenName;
+                user.FamilyName = googleUser.FamilyName;
+                user.Email = googleUser.Email;
                 user.Picture = googleUser.Picture;
             }
-            
+            else
+            {
+                await PageDialog.DisplayAlertAsync("Error", loginEventArgs.Message, "OK");
+            }
             CrossGoogleClient.Current.OnLogin -= OnLogInCompleted;
         }
+        #endregion
+
+
 
     }
 }

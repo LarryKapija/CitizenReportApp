@@ -7,7 +7,7 @@
     <ScrollView>
         <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="15" >
 
-            <Label Text="BIENVENIDO PEDRO!" Padding="15,0,0,0" Grid.ColumnSpan="3" FontSize="Large" Margin="0,75,0,10" />
+            <Label Text="{Binding name}" Padding="15,0,0,0" Grid.ColumnSpan="3" FontSize="Large" Margin="0,75,0,10" />
 
             <Frame Grid.Row="1" Grid.ColumnSpan="3" Padding="50,20" Margin="0,0,0,20">
                 <StackLayout Orientation="Horizontal">

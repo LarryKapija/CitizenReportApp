@@ -9,9 +9,7 @@ using Xamarin.Forms;
 namespace CiudApp
 {
     public partial class App : PrismApplication
-    {
-        public Pages pages = new Pages();
-        
+    { 
 
         public App(IPlatformInitializer platformInitializer) :base(platformInitializer)
         {
@@ -33,6 +31,7 @@ namespace CiudApp
         #region RegisterTypes
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            
 
             #region Pages
                 containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
@@ -52,7 +51,7 @@ namespace CiudApp
         #region OnInitialized
         protected override async void OnInitialized()
         {
-            await NavigationService.NavigateAsync(pages.LogIn);
+            await NavigationService.NavigateAsync(Pages.LogIn);
         }
         #endregion
     }
