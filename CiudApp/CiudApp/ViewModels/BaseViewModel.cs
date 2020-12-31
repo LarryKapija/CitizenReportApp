@@ -1,4 +1,5 @@
 ﻿using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,13 +11,15 @@ namespace CiudApp.ViewModels
     {
         #region Attributes:
         protected INavigationService NavigationService { get; }
+        protected IPageDialogService PageDialog { get; }
         #endregion
 
         //Functions:
         #region BaseViewModel
-        protected BaseViewModel(INavigationService navigationService )
+        protected BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService )
         {
             NavigationService = navigationService;
+            PageDialog = pageDialogService;
         }
         #endregion
 

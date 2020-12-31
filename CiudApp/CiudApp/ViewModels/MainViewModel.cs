@@ -1,5 +1,6 @@
 ﻿using CiudApp.Models;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,7 @@ namespace CiudApp.ViewModels
 
         //Functions:
         #region MainViewModel
-        public MainViewModel(INavigationService navigationService) : base(navigationService)
+        public MainViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService,pageDialogService)
         {
             NavegateCommand = new Command(async (page) => await Navigate(page.ToString()));
         }
@@ -26,7 +27,7 @@ namespace CiudApp.ViewModels
         #region Navigate
         async Task Navigate(string page)
         {
-            await NavigationService.NavigateAsync(page);
+           // await NavigationService.NavigateAsync(page);
         }
         #endregion
     }
