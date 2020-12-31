@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CiudApp.Views.LogInPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}" />
+        <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*" >
+
+            <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}" 
+                    Grid.Row="0"/>
+            <!--Just for the example
             <Label Text="{Binding Label}"/>
-            <Image Source="{Binding Image}" />
-        </StackLayout>
+            <Image Source="{Binding Image}" -->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -15,38 +15,39 @@ namespace CiudApp.ViewModels
         #region Commands and Atributtes
         public ICommand GoogleLogIn { get; }
 
-        public String label;
-        public String Label
-        {
-            get
-            {
-                return label;
-            }
+        #region Just for the example
+        //public String label;
+        //public String Label
+        //{
+        //    get
+        //    {
+        //        return label;
+        //    }
 
-            set
-            {
-                label = value;
-                GetNotify(nameof(Label));
-            }
-        }
+        //    set
+        //    {
+        //        label = value;
+        //        GetNotify(nameof(Label));
+        //    }
+        //}
 
-        public Uri img;
-        public Uri Image
-        {
-            get
-            {
-                return img;
-            }
+        //public Uri img;
+        //public Uri Image
+        //{
+        //    get
+        //    {
+        //        return img;
+        //    }
 
-            set
-            {
-                img = value;
-                GetNotify(nameof(Image));
-            }
-        }
+        //    set
+        //    {
+        //        img = value;
+        //        GetNotify(nameof(Image));
+        //    }
+        //} 
+        #endregion
 
         IPageDialogService PageDialog; //For displaying alert.
-
         User user;
         #endregion
 
@@ -61,7 +62,7 @@ namespace CiudApp.ViewModels
         }
         #endregion
 
-        #region GoogleCheck
+        #region GoogleCheck and OnLogInCompleted
         /// <summary>
         /// Function that will log in the user with his or her google account.
         /// </summary>
@@ -71,8 +72,8 @@ namespace CiudApp.ViewModels
             try
             {
                 await CrossGoogleClient.Current.LoginAsync();
-                Label = user.Name;
-                Image = user.Picture;
+                //Label = user.Name;
+                //Image = user.Picture;
             }
             catch (Exception e)
             {
@@ -81,8 +82,7 @@ namespace CiudApp.ViewModels
             }
 
         }
-        #endregion
-
+        
         private void OnLogInCompleted(object sender, GoogleClientResultEventArgs<GoogleUser> loginEventArgs)
         {
             if(loginEventArgs.Data != null)
@@ -94,6 +94,6 @@ namespace CiudApp.ViewModels
             
             CrossGoogleClient.Current.OnLogin -= OnLogInCompleted;
         }
-
+        #endregion
     }
 }
