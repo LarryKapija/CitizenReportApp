@@ -70,9 +70,13 @@ namespace CiudApp.ViewModels
             {
                 await CrossGoogleClient.Current.LoginAsync();
 
-                Label = user.Name;
-                Image = user.Picture;
-                await NavigationService.NavigateAsync($"/Home");
+                //Label = user.Name;
+                //Image = user.Picture;
+
+                NavigationParameters parameters = new NavigationParameters();
+                parameters.Add("name", user.Name);
+
+                await NavigationService.NavigateAsync($"/Home", parameters);
             }
             catch (GoogleClientSignInNetworkErrorException )
             {
