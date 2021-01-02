@@ -10,9 +10,8 @@ using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
 {
-    public class HomeViewModel : BaseViewModel, INavigatedAware
+    public class HomeViewModel : BaseViewModel
     {
-        User user { get; }
 
         public String title;
         public String Title
@@ -28,11 +27,22 @@ namespace CiudApp.ViewModels
                 GetNotify(nameof(Title));
             }
         }
-        public String Name { get; set; }
+        public User User { get; set; }
+        public Uri image;
+        public Uri Image
+        {
+            get
+            {
+                return image;
+            }
 
-        public LogInViewModel logIn;
+            set
+            {
+                image = value;
+                GetNotify(nameof(Image));
+            }
+        }
 
-        
 
 
         #region Commands
@@ -41,7 +51,7 @@ namespace CiudApp.ViewModels
 
         //Functions:
         #region HomeViewModel
-        public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
+        public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware) : base(navigationService, pageDialogService, navigatedAware)
         {
             NavegateCommand = new Command(async () => await Navigate());
         }
@@ -57,13 +67,14 @@ namespace CiudApp.ViewModels
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            
+
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            Name = parameters.GetValue<String>("name");
-            Title = $"Bienvenido {Name.Substring(0, 6)}";
+            User = parameters.GetValue<User>("user");
+            Title = $"Bienvenido {User.Name}";
+            Image = User.Picture;
         }
         #endregion
 

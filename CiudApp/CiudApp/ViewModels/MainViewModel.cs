@@ -18,7 +18,7 @@ namespace CiudApp.ViewModels
 
         //Functions:
         #region MainViewModel
-        public MainViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService,pageDialogService)
+        public MainViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware) : base(navigationService,pageDialogService, navigatedAware)
         {
             NavegateCommand = new Command(async (page) => await Navigate(page.ToString()));
         }
@@ -30,5 +30,34 @@ namespace CiudApp.ViewModels
            // await NavigationService.NavigateAsync(page);
         }
         #endregion
+
+
+
+        public String title;
+        public String Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+                GetNotify(nameof(Title));
+            }
+        }
+        public User  User { get; set; }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            User = parameters.GetValue<User>("user");
+            Title = $"Bienvenido {User.Name}";
+        }
     }
 }

@@ -1,25 +1,26 @@
 ﻿using Prism.Navigation;
 using Prism.Services;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace CiudApp.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged , INavigatedAware
+
     {
         #region Attributes:
         protected INavigationService NavigationService { get; }
         protected IPageDialogService PageDialog { get; }
+        protected INavigatedAware NavigatedAware { get; }
         #endregion
 
         //Functions:
         #region BaseViewModel
-        protected BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService )
+        protected BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware )
         {
             NavigationService = navigationService;
             PageDialog = pageDialogService;
+            NavigatedAware = navigatedAware;
         }
         #endregion
 
@@ -36,6 +37,16 @@ namespace CiudApp.ViewModels
         {
             PropertyChanged?.Invoke(this, 
                 new PropertyChangedEventArgs(property));
+        }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

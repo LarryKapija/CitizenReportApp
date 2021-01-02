@@ -52,7 +52,7 @@ namespace CiudApp.ViewModels
 
 
         #region LogInViewModel
-        public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService,pageDialogService)
+        public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware) : base(navigationService, pageDialogService, navigatedAware)
         {
              user = new User();
             GoogleLogIn = new Command(async () => await GoogleCheck());
@@ -74,9 +74,9 @@ namespace CiudApp.ViewModels
                 //Image = user.Picture;
 
                 NavigationParameters parameters = new NavigationParameters();
-                parameters.Add("name", user.Name);
+                parameters.Add("user", user);
 
-                await NavigationService.NavigateAsync($"/Home", parameters);
+                await NavigationService.NavigateAsync($"/{Pages.MainPage}", parameters);
             }
             catch (GoogleClientSignInNetworkErrorException )
             {
