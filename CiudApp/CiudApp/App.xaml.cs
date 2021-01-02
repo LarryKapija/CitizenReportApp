@@ -39,7 +39,7 @@ namespace CiudApp
                 containerRegistry.RegisterForNavigation<CalendarPage, CalendarViewModel>("Calendar");
                 containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>("Home");
                 containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>("LogIn");
-                containerRegistry.RegisterForNavigation<MainPage, MainViewModel>("Main");
+                containerRegistry.RegisterForNavigation<MainPage>("Main");
                 containerRegistry.RegisterForNavigation<NewEventPage, NewEventViewModel>("NewEvent");
                 containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>("Profile");
                 containerRegistry.RegisterForNavigation<ReportPage, ReportViewModel>("Report");

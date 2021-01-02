@@ -10,9 +10,12 @@ using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
 {
-    public class HomeViewModel : BaseViewModel
+    public class HomeViewModel : BaseViewModel, INavigatedAware
     {
 
+        #region Commands
+        public ICommand NavegateCommand { get;  }
+        #endregion
         public String title;
         public String Title
         {
@@ -28,30 +31,9 @@ namespace CiudApp.ViewModels
             }
         }
         public User User { get; set; }
-        public Uri image;
-        public Uri Image
-        {
-            get
-            {
-                return image;
-            }
-
-            set
-            {
-                image = value;
-                GetNotify(nameof(Image));
-            }
-        }
-
-
-
-        #region Commands
-        public ICommand NavegateCommand { get;  }
-        #endregion
-
         //Functions:
         #region HomeViewModel
-        public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware) : base(navigationService, pageDialogService, navigatedAware)
+        public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             NavegateCommand = new Command(async () => await Navigate());
         }
@@ -64,20 +46,18 @@ namespace CiudApp.ViewModels
         {
             await NavigationService.NavigateAsync(Pages.ProfilePage);
         }
+        #endregion
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
 
         }
 
+
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             User = parameters.GetValue<User>("user");
             Title = $"Bienvenido {User.Name}";
-            Image = User.Picture;
         }
-        #endregion
-
-        
     }
 }

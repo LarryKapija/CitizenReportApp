@@ -52,7 +52,7 @@ namespace CiudApp.ViewModels
 
 
         #region LogInViewModel
-        public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware) : base(navigationService, pageDialogService, navigatedAware)
+        public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
              user = new User();
             GoogleLogIn = new Command(async () => await GoogleCheck());

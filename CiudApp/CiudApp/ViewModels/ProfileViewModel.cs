@@ -16,7 +16,7 @@ namespace CiudApp.ViewModels
         #endregion
 
         #region ProfileViewModel
-        public ProfileViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware) : base(navigationService, pageDialogService, navigatedAware)
+        public ProfileViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             ConfigurationCommand = new Command(async (page) => await Navigate(page.ToString()));
         }

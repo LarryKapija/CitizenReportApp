@@ -5,22 +5,20 @@ using System.ComponentModel;
 
 namespace CiudApp.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged , INavigatedAware
+    public abstract class BaseViewModel : INotifyPropertyChanged
 
     {
         #region Attributes:
         protected INavigationService NavigationService { get; }
         protected IPageDialogService PageDialog { get; }
-        protected INavigatedAware NavigatedAware { get; }
         #endregion
 
         //Functions:
         #region BaseViewModel
-        protected BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService, INavigatedAware navigatedAware )
+        protected BaseViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
         {
             NavigationService = navigationService;
             PageDialog = pageDialogService;
-            NavigatedAware = navigatedAware;
         }
         #endregion
 
@@ -39,16 +37,8 @@ namespace CiudApp.ViewModels
                 new PropertyChangedEventArgs(property));
         }
 
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNavigatedTo(INavigationParameters parameters)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
+
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
