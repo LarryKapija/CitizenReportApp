@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace CiudApp.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged, INavigatedAware
 
     {
         #region Attributes:
@@ -36,8 +36,10 @@ namespace CiudApp.ViewModels
             PropertyChanged?.Invoke(this, 
                 new PropertyChangedEventArgs(property));
         }
-
         #endregion
+
+        public abstract void OnNavigatedFrom(INavigationParameters parameters);
+        public abstract void OnNavigatedTo(INavigationParameters parameters);
 
 
         public event PropertyChangedEventHandler PropertyChanged;

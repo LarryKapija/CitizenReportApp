@@ -29,6 +29,12 @@
                 </StackLayout>
             </Frame>
 
+            <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="End" 
+                    CornerRadius="75" 
+                    Command="{Binding NavegateCommand}"
+                    CommandParameter="Profile"/>
 
             <Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2"  >
                 <StackLayout>
@@ -36,13 +42,6 @@
                     <Image />
                 </StackLayout>
             </Frame>
-
-            <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" 
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="End" 
-                    CornerRadius="75" 
-                    Command="{Binding NavegateCommand}"
-                    CommandParameter="Profile"/>
 
             <Frame Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3">
                 <StackLayout>

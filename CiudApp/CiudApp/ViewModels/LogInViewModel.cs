@@ -122,6 +122,17 @@ namespace CiudApp.ViewModels
             }
             CrossGoogleClient.Current.OnLogin -= OnLogInCompleted;
         }
+
         #endregion
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            
+        }
     }
 }

@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
 {
-    public class HomeViewModel : BaseViewModel, INavigatedAware
+    public class HomeViewModel : BaseViewModel
     {
 
         #region Commands
@@ -31,6 +31,7 @@ namespace CiudApp.ViewModels
             }
         }
         public User User { get; set; }
+
         //Functions:
         #region HomeViewModel
         public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
@@ -48,16 +49,17 @@ namespace CiudApp.ViewModels
         }
         #endregion
 
-        public void OnNavigatedFrom(INavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
 
         }
 
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             User = parameters.GetValue<User>("user");
             Title = $"Bienvenido {User.Name}";
         }
+
     }
 }

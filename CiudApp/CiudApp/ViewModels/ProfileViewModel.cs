@@ -27,6 +27,17 @@ namespace CiudApp.ViewModels
         {
            // await NavigationService.NavigateAsync(page);
         }
+
         #endregion
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            
+        }
     }
 }
