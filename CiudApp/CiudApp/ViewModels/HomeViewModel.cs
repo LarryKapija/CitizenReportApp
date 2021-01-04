@@ -99,6 +99,15 @@ namespace CiudApp.ViewModels
 
                     ReportTitle = lastReport.Title;
                     Progress = lastReport.Status.ToString();
+
+                    String display = "";
+                    //Display all elements of the list.
+                    foreach(var element in reports)
+                    {
+                        display += $"{element.Title}\n";
+                    }
+                    PageDialog.DisplayAlertAsync("Elements from de list",
+                        display, "Ok");
                 }
             }
             else

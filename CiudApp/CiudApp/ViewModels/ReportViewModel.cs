@@ -88,6 +88,8 @@ namespace CiudApp.ViewModels
                 GetNotify(nameof(Description));
             }
         }
+
+        IList<Report> reportList = new List<Report>();
         #endregion
 
         //Functions:
@@ -104,8 +106,12 @@ namespace CiudApp.ViewModels
         {
             bool reportCreated = true;
             Report report = new Report(" ", Title, Subtitle, null, Description);
-            IList<Report> reportList = new List<Report>();
             reportList.Add(report);
+
+            //Wiping out the elements of the Report view:
+            Title = "";
+            Subtitle = "";
+            Description = "";
 
             NavigationParameters parameter = new NavigationParameters();
             parameter.Add("reportList", reportList);
