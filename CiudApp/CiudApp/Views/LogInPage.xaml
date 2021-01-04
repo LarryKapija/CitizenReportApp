@@ -10,6 +10,9 @@
             <!--Just for the example
             <Label Text="{Binding Label}"/>
             <Image Source="{Binding Image}" -->
+            <Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="1"/>
+            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}"
+                    Grid.Row="2"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -49,13 +49,27 @@ namespace CiudApp.ViewModels
 
         internal User user { get; set; }
         #endregion
-
+        public String name;
+        public String Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                GetNotify(nameof(Name));
+            }
+        }
+        public ICommand LogInCommand { get; }
 
         #region LogInViewModel
         public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
              user = new User();
             GoogleLogIn = new Command(async () => await GoogleCheck());
+            LogInCommand = new Command(async () => await LogIn());
         }
         #endregion
 
@@ -124,6 +138,14 @@ namespace CiudApp.ViewModels
         }
 
         #endregion
+
+        public async Task LogIn()
+        {
+            user.Name = Name;
+            NavigationParameters parameter = new NavigationParameters();
+            parameter.Add("user", user);
+            await NavigationService.NavigateAsync($"/{Pages.MainPage}", parameter);
+        }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

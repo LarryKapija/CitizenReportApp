@@ -57,8 +57,20 @@ namespace CiudApp.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            User = parameters.GetValue<User>("user");
-            Title = $"Bienvenido {User.Name}";
+            if(parameters.Count == 2)
+            {
+                if (parameters.GetValue<bool>("reportCreated"))
+                {
+                    //Change the frame of the newest report.
+                    Title = "El reporte ha sido creado";
+                }
+            }
+            else
+            {
+                //Executed when the user come from the Log In.
+                User = parameters.GetValue<User>("user");
+                Title = $"Bienvenido {User.Name}";
+            }
         }
 
     }

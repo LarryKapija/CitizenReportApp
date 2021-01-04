@@ -11,6 +11,7 @@ namespace CiudApp.Models
         public String Subtitle { get; set; }
         public Uri Image { get; set; } //provisional
         public String Description { get; set; }
+        public short Status { get; set; }
 
         //Functions:
         #region Report
@@ -22,6 +23,22 @@ namespace CiudApp.Models
             Subtitle = subtitle;
             Image = image;
             Description = description;
+            Status = 0;
+        }
+        #endregion
+
+        #region ChangeStatus
+        /// <summary>
+        /// This function will work if the authority in charge of getting the
+        /// problem of the report solve wants to show the progress so far.
+        /// </summary>
+        /// <param name="newStatus">
+        ///     Wich porcentage has grown. Needs to be >= 100.
+        /// </param>
+        public void ChangeStatus(short newStatus)
+        {
+            if (newStatus > Status && newStatus < 101)
+                Status = newStatus;
         }
         #endregion
     }
