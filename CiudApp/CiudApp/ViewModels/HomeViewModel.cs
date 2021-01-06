@@ -33,6 +33,21 @@ namespace CiudApp.ViewModels
             }
         }
 
+        public short reportNumber;
+        public short ReportNumber
+        {
+            get
+            {
+                return reportNumber;
+            }
+
+            set
+            {
+                reportNumber = value;
+                GetNotify(nameof(reportNumber));
+            }
+        }
+
         public String reportTitle;
         public String ReportTitle
         {
@@ -82,6 +97,7 @@ namespace CiudApp.ViewModels
         #region HomeViewModel
         public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            ReportNumber = 0; //This is for the example, this number should come from the db.
             NavegateCommand = new Command(async () => await Navigate());
         }
 
@@ -108,13 +124,13 @@ namespace CiudApp.ViewModels
                 if (parameters.GetValue<bool>("reportCreated"))
                 {
                     //Change the frame of the newest report.
-                        //Title = "El reporte ha sido creado";
                     IList<Report> reports = parameters.GetValue<IList<Report>>("reportList");
                     Report lastReport = reports.Last();
 
                     ReportTitle = lastReport.Title;
                     Progress = $"{lastReport.Status.ToString()}%";
                     ImageSource = lastReport.Image.FullPath;
+                    //ReportNumber++;
 
                     String display = "";
                     //Display all elements of the list.

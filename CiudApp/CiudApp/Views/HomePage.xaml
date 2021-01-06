@@ -19,7 +19,7 @@
 
                     <StackLayout HorizontalOptions="CenterAndExpand">
                         <Label Text="REPORTES"/>
-                        <Label Text="73" HorizontalOptions="Center"/>
+                        <Label Text="{Binding ReportNumber}" HorizontalOptions="Center"/>
                     </StackLayout>
 
                     <StackLayout HorizontalOptions="EndAndExpand">
