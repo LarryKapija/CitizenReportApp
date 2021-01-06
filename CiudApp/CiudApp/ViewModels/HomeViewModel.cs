@@ -60,6 +60,21 @@ namespace CiudApp.ViewModels
                 GetNotify(nameof(Progress));
             }
         }
+
+        public FileImageSource imageSource;
+        public FileImageSource ImageSource
+        {
+            get
+            {
+                return imageSource;
+            }
+
+            set
+            {
+                imageSource = value;
+                GetNotify(nameof(ImageSource));
+            }
+        }
         public User User { get; set; }
         #endregion
 
@@ -85,7 +100,7 @@ namespace CiudApp.ViewModels
 
         }
 
-
+        #region OnNavigatedTo
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if(parameters.Count == 2)
@@ -98,7 +113,8 @@ namespace CiudApp.ViewModels
                     Report lastReport = reports.Last();
 
                     ReportTitle = lastReport.Title;
-                    Progress = lastReport.Status.ToString();
+                    Progress = $"{lastReport.Status.ToString()}%";
+                    ImageSource = lastReport.Image.FullPath;
 
                     String display = "";
                     //Display all elements of the list.
@@ -117,6 +133,7 @@ namespace CiudApp.ViewModels
                 Title = $"Bienvenido {User.Name}";
             }
         }
+        #endregion
 
     }
 }

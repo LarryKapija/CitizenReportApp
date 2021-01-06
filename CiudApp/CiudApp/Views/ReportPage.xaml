@@ -29,7 +29,7 @@
                     Text="{Binding Subtitle}"/>
                 <CheckBox Grid.Row="7" Grid.Column="2" HorizontalOptions="Center" IsChecked="{Binding IsChecked}"/>
 
-                <Button Text="Agregar Imagen" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" />
+                <Button Text="Agregar Imagen" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding ImageCommand}"/>
 
                 <Label Text="Descripción" FontSize="Large" Grid.Row="9" />
 
@@ -39,7 +39,7 @@
                 <Frame Grid.Row="11" Grid.Column="1" HorizontalOptions="Center" 
                        Padding="10">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding frameCommand}" />
+                        <TapGestureRecognizer Command="{Binding FrameCommand}" />
                     </Frame.GestureRecognizers>
                     <Label Text="Completar ->" />
                 </Frame>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace CiudApp.Models
 {
@@ -9,14 +11,14 @@ namespace CiudApp.Models
         public String Location { get; set; }
         public String Title { get; set; }
         public String Subtitle { get; set; }
-        public Uri Image { get; set; } //provisional
+        public FileResult Image { get; set; } //provisional
         public String Description { get; set; }
         public short Status { get; set; }
 
         //Functions:
         #region Report
         public Report(String location, String title, String subtitle,
-                      Uri image, String description)
+                      FileResult image, String description)
         {
             Location = location;
             Title = title;

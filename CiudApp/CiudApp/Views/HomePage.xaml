@@ -36,14 +36,17 @@
                     Command="{Binding NavegateCommand}"
                     CommandParameter="Profile"/>
 
-            <Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2"  >
-                <StackLayout>
-                    <Label Text="Estado del ultimo reporte" FontSize="Subtitle" />
+            <Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                <AbsoluteLayout>
+                    <Image Source="{Binding ImageSource}" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill" />
+                    <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
+                        <Label Text="Estado del ultimo reporte" FontSize="Subtitle" TextColor="White"/>
 
-                    <Label Text="{Binding ReportTitle}" />
-                    <ProgressBar/>
-                    <Label Text="{Binding Progress}" />
-                </StackLayout>
+                        <Label Text="{Binding ReportTitle}" TextColor="White"/>
+                        <ProgressBar/>
+                        <Label Text="{Binding Progress}" TextColor="White"/>
+                    </StackLayout>
+                </AbsoluteLayout>
             </Frame>
 
             <Frame Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3">

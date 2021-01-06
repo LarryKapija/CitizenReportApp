@@ -5,8 +5,11 @@ using Prism.Navigation.TabbedPages;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
@@ -14,7 +17,8 @@ namespace CiudApp.ViewModels
     class ReportViewModel : BaseViewModel
     {
         #region Commands and Attributes:
-        public ICommand frameCommand { get; set; }
+        public ICommand FrameCommand { get; set; }
+        public ICommand ImageCommand { get; set; }
 
         public bool isEnable;
         public bool IsEnable
@@ -89,6 +93,8 @@ namespace CiudApp.ViewModels
             }
         }
 
+        public FileResult Image { get; set; }
+
         IList<Report> reportList = new List<Report>();
         #endregion
 
@@ -98,14 +104,23 @@ namespace CiudApp.ViewModels
         public ReportViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             IsEnable = false;
-            frameCommand = new Command(frameTapped);
+            ImageCommand = new Command(async () => await AddPhoto());
+            FrameCommand = new Command(FrameTapped);
         }
         #endregion
 
-        private void frameTapped()
+        #region AddPhoto
+        async private Task AddPhoto()
+        {
+            Image = await MediaPicker.PickPhotoAsync();
+        }
+        #endregion
+
+        #region FrameTapped
+        private void FrameTapped()
         {
             bool reportCreated = true;
-            Report report = new Report(" ", Title, Subtitle, null, Description);
+            Report report = new Report(" ", Title, Subtitle, Image, Description);
             reportList.Add(report);
 
             //Wiping out the elements of the Report view:
@@ -119,6 +134,7 @@ namespace CiudApp.ViewModels
 
             NavigationService.SelectTabAsync($"{Pages.HomePage}", parameter);
         }
+        #endregion
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
