@@ -2,48 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CiudApp.Views.ReportPage"
-             Title="Reportes">
+            Title="Reportes">
 
-        <ScrollView>
-            <Grid Margin="30, 10, 0, 10" 
-                  RowDefinitions="*,*,*,*,*,*,*,*,*,*,*"
-                  ColumnDefinitions="*,*,*">
+    <ScrollView>
+        <StackLayout>
+            <ListView >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell
+                        ImageSource="{Binding image}"
+                        Text="{Binding text}"
+                        Detail="{Binding detail}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-                <Label Text="Reporte" TextTransform="Uppercase" FontSize="Title" VerticalOptions="Center"
-                       Grid.Row="0" Grid.Column="0" />
-                <Button Text="Elegir la ubicación actual" Grid.Row="1" Grid.ColumnSpan="2" />
-                <Button Text="Abrir Maps" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding GetLocationCommand}" />
+            <Button Command="{Binding NavigationCommand}" HorizontalOptions="End" VerticalOptions="End" CornerRadius="40"/>
+        </StackLayout>
 
-                <Label Text="Categoría" FontSize="Large" Grid.Row="3" Grid.Column="0" />
-                <!--<Entry Text="Evento" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
-                <CheckBox Grid.Row="4" Grid.Column="2" HorizontalOptions="Center"/>
+    </ScrollView>
 
-                <Entry Text="Reporte" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" />
-                <CheckBox Grid.Row="5" Grid.Column="2" HorizontalOptions="Center" />-->
 
-                <Entry Placeholder="Título" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
-                       Text="{Binding Title}"/>
-                <!--<CheckBox Grid.Row="6" Grid.Column="2" HorizontalOptions="Center" />-->
-
-                <Entry Placeholder="Subtítulo" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsEnable}"
-                    Text="{Binding Subtitle}"/>
-                <CheckBox Grid.Row="7" Grid.Column="2" HorizontalOptions="Center" IsChecked="{Binding IsChecked}"/>
-
-                <Button Text="Agregar Imagen" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding ImageCommand}"/>
-
-                <Label Text="Descripción" FontSize="Large" Grid.Row="9" />
-
-                <Editor Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
-                        Text="{Binding Description}"/>
-
-                <Frame Grid.Row="11" Grid.Column="1" HorizontalOptions="Center" 
-                       Padding="10">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FrameCommand}" />
-                    </Frame.GestureRecognizers>
-                    <Label Text="Completar ->" />
-                </Frame>
-            </Grid>
-        </ScrollView>
 
 </ContentPage>
