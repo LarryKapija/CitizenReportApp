@@ -26,6 +26,7 @@ namespace CiudApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.FormsMaps.Init(); //For the Google map.
 
             GoogleClientManager.Initialize(); //For the Google auth.
 

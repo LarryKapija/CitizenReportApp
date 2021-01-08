@@ -10,12 +10,14 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace CiudApp.ViewModels
-{
+{ 
     class ReportFormViewModel : BaseViewModel
     {
         #region Commands and Attributes:
         public ICommand FrameCommand { get; set; }
         public ICommand ImageCommand { get; set; }
+
+        public ICommand GetLocationCommand { get; set; }
 
         public bool isEnable;
         public bool IsEnable
@@ -101,8 +103,16 @@ namespace CiudApp.ViewModels
         public ReportFormViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             IsEnable = false;
+            GetLocationCommand = new Command(async () => await Navigate());
             ImageCommand = new Command(async () => await AddMedia());
             FrameCommand = new Command(FrameTapped);
+        }
+        #endregion
+
+        #region Navigate
+        public async Task Navigate()
+        {
+            await NavigationService.NavigateAsync($"{Pages.MapPage}");
         }
         #endregion
 

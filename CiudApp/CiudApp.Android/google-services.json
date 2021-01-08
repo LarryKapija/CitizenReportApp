@@ -1,12 +1,75 @@
-{
-    "project_info": {
+//{
+//    "project_info": {
 
-    },
-    "client": [
-        
-            ],
-            "api_key": [
-               
-    ],
-    "configuration_version": "1"
+//    },
+//    "client": [
+
+//            ],
+//            "api_key": [
+
+//    ],
+//    "configuration_version": "1"
+//}
+
+{
+  "project_info": {
+    "project_number": "30403558470",
+    "project_id": "ciudapp-7a4e1",
+    "storage_bucket": "ciudapp-7a4e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30403558470:android:648140bcf7877b18151e47",
+        "android_client_info": {
+          "package_name": "com.companyname.ciudapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30403558470-vlap3gro42itekredrvgnq9rvte2jfdf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.ciudapp",
+            "certificate_hash": "eaf96f9cff1d46a3cc340fc8da6568bc22a76edb"
+          }
+        },
+        {
+          "client_id": "30403558470-vuasgpl54adm7tgd86cb9ub4962d98qt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.ciudapp",
+            "certificate_hash": "e061d4d0c5d95f4a1b1932e1ea2ba0e5384f3dbf"
+          }
+        },
+        {
+          "client_id": "30403558470-bsj8mejrhjnd4cv2782s8sal75jj65o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY96XSimoWFynos8MMtzNRLVGeFwUCHCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30403558470-bsj8mejrhjnd4cv2782s8sal75jj65o0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "30403558470-kbb16j7s7llhr389kn05cf3oflju42uo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.companyname.CiudApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }
