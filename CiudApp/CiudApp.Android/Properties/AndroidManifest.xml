@@ -3,8 +3,6 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
 	<application android:label="CiudApp.Android" android:theme="@style/MainTheme">
 		<!--Google maps APi-->
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAY96XSimoWFynos8MMtzNRLVGeFwUCHCQ" />
-		<uses-library android:name="org.apache.http.legacy" android:required="false" />
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
