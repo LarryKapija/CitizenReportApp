@@ -11,7 +11,7 @@
     <TabbedPage.Children>
         <pages:HomePage/>
         <pages:ReportPage/>
-        <pages:CalendarPage/>
+        <pages:ProfilePage/>
     </TabbedPage.Children>
 
 </TabbedPage>

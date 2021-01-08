@@ -2,13 +2,13 @@
 {
     public static class Pages
     {
-        public const string AccountConfigurationPage = "AccountConfiguration";
-        public const string CalendarPage = "Calendar";
-        public const string HomePage = "Home";
-        public const string LogIn = "LogIn";
-        public const string MainPage = "Main";
-        public const string NewEventPage = "NewEvent";
-        public const string ProfilePage = "Profile";
-        public const string ReportPage = "Report";
+        public const string AccountConfigurationPage = nameof(AccountConfigurationPage);
+        public const string HomePage = nameof(HomePage);
+        public const string LogIn = nameof(LogIn);
+        public const string MainPage = nameof(MainPage);
+        public const string NewEventPage = nameof(NewEventPage);
+        public const string ProfilePage = nameof(ProfilePage);
+        public const string ReportPage = nameof(ReportPage);
+        public const string ReportForm = nameof(ReportForm);
     }
 }

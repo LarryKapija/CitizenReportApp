@@ -9,8 +9,6 @@ namespace CiudApp.ViewModels
 {
     class ProfileViewModel : BaseViewModel
     {
-
-        User user;
         #region Command
         public ICommand ConfigurationCommand { get; }
         #endregion
@@ -25,7 +23,7 @@ namespace CiudApp.ViewModels
         #region Navigate
         async Task Navigate(string page)
         {
-           // await NavigationService.NavigateAsync(page);
+            await NavigationService.NavigateAsync(page);
         }
 
         #endregion

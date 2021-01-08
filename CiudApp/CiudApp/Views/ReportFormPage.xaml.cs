@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace CiudApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CalendarPage : ContentPage
+    public partial class ReportFormPage : ContentPage
     {
-        public CalendarPage()
+        public ReportFormPage()
         {
             InitializeComponent();
         }
