@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CiudApp.Views
+namespace CiudApp.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ReportForm : ContentPage
+    public partial class CalendarPage : ContentPage
     {
-        public ReportForm()
+        public CalendarPage()
         {
             InitializeComponent();
         }

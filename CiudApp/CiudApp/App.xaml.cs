@@ -34,15 +34,15 @@ namespace CiudApp
             
 
             #region Pages
-                containerRegistry.RegisterForNavigation<NavigationPage>();
-                containerRegistry.RegisterForNavigation<AccountConfigurationPage, AccountConfigurationViewModel>(Pages.AccountConfigurationPage);
-                containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(Pages.HomePage);
-                containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>(Pages.LogIn);
-                containerRegistry.RegisterForNavigation<MainPage>(Pages.MainPage);
-                containerRegistry.RegisterForNavigation<NewEventPage, NewEventViewModel>(Pages.NewEventPage);
-                containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>(Pages.ProfilePage);
-                containerRegistry.RegisterForNavigation<ReportPage, ReportViewModel>(Pages.ReportPage);
-                containerRegistry.RegisterForNavigation<ReportForm, ReportFormViewModel>(Pages.ReportForm);
+                containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
+                containerRegistry.RegisterForNavigation<AccountConfigurationPage, AccountConfigurationViewModel>("AccountConfiguration");
+                containerRegistry.RegisterForNavigation<CalendarPage, CalendarViewModel>("Calendar");
+                containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>("Home");
+                containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>("LogIn");
+                containerRegistry.RegisterForNavigation<MainPage>("Main");
+                containerRegistry.RegisterForNavigation<NewEventPage, NewEventViewModel>("NewEvent");
+                containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>("Profile");
+                containerRegistry.RegisterForNavigation<ReportPage, ReportViewModel>("Report");
             #endregion
 
         }

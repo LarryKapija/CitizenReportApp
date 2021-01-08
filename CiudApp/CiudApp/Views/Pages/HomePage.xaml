@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.Pages.HomePage">
+
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="15" >
+
+            <Label Text="BIENVENIDO PEDRO!" Padding="15,0,0,0" Grid.ColumnSpan="3" FontSize="Large" Margin="0,75,0,10" />
+
+            <Frame Grid.Row="1" Grid.ColumnSpan="3" Padding="50,20" Margin="0,0,0,20">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="StartAndExpand">
+                        <Label Text="ACTIVIDADES" />
+                        <Label Text="150" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Text="REPORTES"/>
+                        <Label Text="73" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Label Text="COMPARTIR"/>
+                        <Label Text="share" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+
+            <Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2"  >
+                <StackLayout>
+                    <Label Text="Estado del ultimo reporte" FontSize="Subtitle" />
+                    <Image />
+                </StackLayout>
+            </Frame>
+
+            <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" VerticalOptions="CenterAndExpand" HorizontalOptions="End" CornerRadius="75"></Button>
+
+            <Frame Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                <StackLayout>
+                    <Label Text="Proximos Eventos" FontSize="Subtitle" />
+                    <ListView x:Name="Eventos" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ImageCell 
+                                    
+                                    Height="50" 
+                                    Text="" 
+                                    Detail="" 
+                                    ImageSource="" >
+                                    
+                                </ImageCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+
+        </Grid>
+
+    </ScrollView>
+
+</ContentPage>
