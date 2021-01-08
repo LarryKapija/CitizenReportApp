@@ -36,7 +36,51 @@
                     Command="{Binding NavegateCommand}"
                     CommandParameter="Profile"/>
 
-            <Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <CarouselView ItemsSource="{Binding report}" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" HeightRequest="300" PeekAreaInsets="110">
+
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout>
+                            <Frame HeightRequest="280" WidthRequest="180" 
+               
+                               BackgroundColor="White" Padding="0"
+                               HasShadow="True" Margin="10" CornerRadius="10"
+                               HorizontalOptions="CenterAndExpand">
+                                <Grid>
+                                    <StackLayout  BackgroundColor="Black">
+                                        <Image Source="{Binding imgSource}" 
+                                        HeightRequest="350" Opacity="0.6"
+                                        Aspect="AspectFill"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="0,0,0,10">
+
+                                        <Image Source="https://images.vexels.com/media/users/3/147081/isolated/preview/8665e39f2880934120b3c37131210042-instagram-bookmark-icon-by-vexels.png" 
+                                               HeightRequest="50"
+                                               Aspect="AspectFit" HorizontalOptions="EndAndExpand" Margin="10,0"/>  
+                                        <Label Text="{Binding title}" TextColor="White" FontSize="18"
+                                               FontAttributes="None" Margin="15,0"
+                                               VerticalOptions="EndAndExpand"/>
+
+                                        <StackLayout Orientation="Horizontal"  Margin="15,-8,0,0">
+                                            <Image Source="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png" 
+                                                   HeightRequest="20"  Margin="-5,0"
+                                                   Aspect="AspectFit"/>
+                                            
+                                            <Label Text="{Binding country}" TextColor="White" FontSize="14"
+                                                   FontAttributes="None" 
+                                                   VerticalOptions="EndAndExpand"/>     
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Frame>
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <!--<Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2">
                 <AbsoluteLayout>
                     <Image Source="{Binding ImageSource}" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill" />
                     <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
@@ -47,7 +91,7 @@
                         <Label Text="{Binding Progress}" TextColor="White"/>
                     </StackLayout>
                 </AbsoluteLayout>
-            </Frame>
+            </Frame>-->
 
             <Frame Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3">
                 <StackLayout>

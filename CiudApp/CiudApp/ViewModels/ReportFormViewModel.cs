@@ -102,7 +102,7 @@ namespace CiudApp.ViewModels
         {
             IsEnable = false;
             ImageCommand = new Command(async () => await AddMedia());
-            FrameCommand = new Command(FrameTapped);
+            //FrameCommand = new Command(FrameTapped);
         }
         #endregion
 
@@ -167,7 +167,7 @@ namespace CiudApp.ViewModels
         #endregion
 
         #region FrameTapped
-        private void FrameTapped()
+        /*private void FrameTapped()
         {
             bool reportCreated = true;
             Report report = new Report(" ", Title, Subtitle, Image, Description);
@@ -183,7 +183,7 @@ namespace CiudApp.ViewModels
             parameter.Add("reportCreated", reportCreated);
 
             NavigationService.SelectTabAsync($"{Pages.HomePage}", parameter);
-        }
+        }*/
         #endregion
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

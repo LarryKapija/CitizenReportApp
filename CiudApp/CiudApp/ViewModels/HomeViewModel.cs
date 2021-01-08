@@ -5,6 +5,8 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,8 +18,8 @@ namespace CiudApp.ViewModels
     {
 
         #region Commands and Attributes:
-        public ICommand NavegateCommand { get;  }
-        
+        public ICommand NavegateCommand { get; }
+
         public String title;
         public String Title
         {
@@ -98,17 +100,19 @@ namespace CiudApp.ViewModels
         public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             ReportNumber = 0; //This is for the example, this number should come from the db.
-            NavegateCommand = new Command(async () => await Navigate());
+            addData();
+
+            // NavegateCommand = new Command(async () => await Navigate());
         }
 
 
         #endregion
 
         #region Navigate
-        async Task Navigate()
-        {
-            await NavigationService.NavigateAsync(Pages.ProfilePage);
-        }
+        //async Task Navigate()
+        //{
+        //    await NavigationService.NavigateAsync(Pages.ProfilePage);
+        //}
         #endregion
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
@@ -119,7 +123,7 @@ namespace CiudApp.ViewModels
         #region OnNavigatedTo
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if(parameters.Count == 2)
+            /*if(parameters.Count == 2)
             {
                 if (parameters.GetValue<bool>("reportCreated"))
                 {
@@ -147,9 +151,51 @@ namespace CiudApp.ViewModels
                 //Executed when the user come from the Log In.
                 User = parameters.GetValue<User>("user");
                 Title = $"Bienvenido {User.Name}";
-            }
+            }*/
         }
         #endregion
 
+        #region addData()
+        private ObservableCollection<Report> Report;
+
+        public ObservableCollection<Report> report
+        {
+            get { return Report; }
+            set
+            {
+                Report = value;
+
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("report"));
+            }
+        }
+        private void addData()
+        {
+            report.Add(new Report
+            {
+
+                Id = 0,
+                Title = "The beautiful lake",
+                Subtitle = "Norway",
+                Image = "https://images.pexels.com/photos/2217365/pexels-photo-2217365.jpeg"
+            });
+            report.Add(new Report
+            {
+
+                Id = 0,
+                Title = "Adventure of snow",
+                Subtitle = "Nepal",
+                Image = "https://images.pexels.com/photos/753772/pexels-photo-753772.jpeg"
+            });
+            report.Add(new Report
+            {
+
+                Id = 0,
+                Title = "Beach is where life is",
+                Subtitle = "Malaysia",
+                Image = "https://images.pexels.com/photos/6023784/pexels-photo-6023784.jpeg"
+            });
+            #endregion
+
+        }
     }
 }
