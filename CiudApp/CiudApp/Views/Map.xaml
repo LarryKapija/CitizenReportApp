@@ -4,6 +4,10 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="CiudApp.Views.Map">
     <ContentPage.Content>
-        <maps:Map x:Name="map" />
+        <StackLayout>
+            <Entry Placeholder="Ingrese la ubicación del reporte" />
+            <Button Text="Ingresar esta ubicación" />
+            <maps:Map x:Name="map" IsShowingUser="True" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
