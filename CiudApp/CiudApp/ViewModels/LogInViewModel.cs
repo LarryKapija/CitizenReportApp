@@ -106,11 +106,11 @@ namespace CiudApp.ViewModels
             }
             catch (GoogleClientSignInInternalErrorException )
             {
-                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 888-888-8888", "OK");
+                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 111-111-1111", "OK");
             }
             catch (GoogleClientNotInitializedErrorException )
             {
-                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 888-888-8888", "OK");
+                await PageDialog.DisplayAlertAsync("Error", "Error desconocido. \nFavor llamar al 222-222-2222", "OK");
             }
             catch (GoogleClientBaseException )
             {

@@ -104,8 +104,8 @@ namespace CiudApp.ViewModels
         {
             IsEnable = false;
             GetLocationCommand = new Command(async () => await Navigate());
-            ImageCommand = new Command(async () => await AddMedia());
-            //FrameCommand = new Command(FrameTapped);
+            ImageCommand = new Command(async () => await AddPhoto());
+            FrameCommand = new Command(FrameTapped);
         }
         #endregion
 
@@ -117,28 +117,9 @@ namespace CiudApp.ViewModels
         #endregion
 
         #region AddMedia
-        async private Task AddMedia()
+        async private Task AddPhoto()
         {
 
-            string Action, Photo, Video;
-            Photo = "Subir Foto";
-            Video = "Subir Video";
-
-            Action = await App.Current.MainPage.DisplayActionSheet("Elegir Media", "Cancelar", null, $"{Photo}", $"{Video}");
-
-            if (Action == Photo)
-            {
-                await ChoosePhoto();
-            }
-            else if (Action == Video)
-            {
-                await ChooseVideo();
-            }
-
-        }
-
-        async private Task ChoosePhoto()
-        {
             string Action, TakePhoto, ChoosePhoto;
             TakePhoto = "Tomar foto";
             ChoosePhoto = "Elegir una de la galeria";
@@ -147,40 +128,51 @@ namespace CiudApp.ViewModels
 
             if (Action == TakePhoto)
             {
-                await MediaPicker.CapturePhotoAsync();
+                await TakePhotoAsync();
             }
             else if (Action == ChoosePhoto)
             {
-                await MediaPicker.PickPhotoAsync();
+                await LoadPhotoAsync();
             }
+
         }
 
-        async private Task ChooseVideo()
+        async Task TakePhotoAsync()
         {
-            string Action, TakeVideo, ChooseVideo;
-            TakeVideo = "Tomar video";
-            ChooseVideo = "Elegir uno de la galeria";
-
-            Action = await App.Current.MainPage.DisplayActionSheet("Subir video", "Cancelar", null, $"{TakeVideo}", $"{ChooseVideo}");
-
-            if (Action == TakeVideo)
+            if(MediaPicker.IsCaptureSupported)
             {
-                await MediaPicker.CaptureVideoAsync();
+                Image = await MediaPicker.CapturePhotoAsync();
             }
-            else if (Action == ChooseVideo)
+            else
             {
-                await MediaPicker.PickVideoAsync();
+                await PageDialog.DisplayAlertAsync("ERROR", "Dispositivo no tiene camara disponible", "OK");
             }
+           
+
+        }
+
+        async Task LoadPhotoAsync()
+        {
+            Image = await MediaPicker.PickPhotoAsync();
+
         }
 
 
         #endregion
 
         #region FrameTapped
-        /*private void FrameTapped()
+        private void FrameTapped()
         {
             bool reportCreated = true;
-            Report report = new Report(" ", Title, Subtitle, Image, Description);
+            Report report = new Report() 
+            {
+                Location=" ", 
+                Title=Title, 
+                Subtitle=Subtitle, 
+                Image=Image.FullPath,  
+                Description = "Yo lo que soy un mardito loco"
+            
+            };
             reportList.Add(report);
 
             //Wiping out the elements of the Report view:
@@ -188,12 +180,13 @@ namespace CiudApp.ViewModels
             Subtitle = "";
             Description = "";
 
-            NavigationParameters parameter = new NavigationParameters();
-            parameter.Add("reportList", reportList);
-            parameter.Add("reportCreated", reportCreated);
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add("report", report);
+            parameters.Add("reportCreated", reportCreated);
 
-            NavigationService.SelectTabAsync($"{Pages.HomePage}", parameter);
-        }*/
+            NavigationService.GoBackAsync(parameters);
+            
+        }
         #endregion
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

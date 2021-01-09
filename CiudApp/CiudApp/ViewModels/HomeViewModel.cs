@@ -78,8 +78,8 @@ namespace CiudApp.ViewModels
             }
         }
 
-        public FileImageSource imageSource;
-        public FileImageSource ImageSource
+        public String imageSource;
+        public String ImageSource
         {
             get
             {
@@ -100,7 +100,7 @@ namespace CiudApp.ViewModels
         public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             ReportNumber = 0; //This is for the example, this number should come from the db.
-            addData();
+            //addData();
 
             // NavegateCommand = new Command(async () => await Navigate());
         }
@@ -123,79 +123,34 @@ namespace CiudApp.ViewModels
         #region OnNavigatedTo
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            /*if(parameters.Count == 2)
-            {
-                if (parameters.GetValue<bool>("reportCreated"))
-                {
-                    //Change the frame of the newest report.
-                    IList<Report> reports = parameters.GetValue<IList<Report>>("reportList");
-                    Report lastReport = reports.Last();
 
-                    ReportTitle = lastReport.Title;
-                    Progress = $"{lastReport.Status.ToString()}%";
-                    ImageSource = lastReport.Image.FullPath;
-                    //ReportNumber++;
-
-                    String display = "";
-                    //Display all elements of the list.
-                    foreach(var element in reports)
-                    {
-                        display += $"{element.Title}\n";
-                    }
-                    PageDialog.DisplayAlertAsync("Elements from de list",
-                        display, "Ok");
-                }
-            }
-            else
+            if (parameters.TryGetValue("user", out User user))
             {
-                //Executed when the user come from the Log In.
                 User = parameters.GetValue<User>("user");
                 Title = $"Bienvenido {User.Name}";
-            }*/
+            }
+            else if (parameters.TryGetValue("report", out Report reports))//GetValue<bool>("reportCreated"))
+            {
+                Report.Add(reports);
+
+                String display = "";
+                //Display all elements of the list.
+                foreach(var element in Report)
+                {
+                    display += $"{element.Title}\n";
+                }
+                PageDialog.DisplayAlertAsync("Elements from de list", display, "Ok");
+            }
+
         }
         #endregion
 
         #region addData()
-        private ObservableCollection<Report> Report;
 
-        public ObservableCollection<Report> report
-        {
-            get { return Report; }
-            set
-            {
-                Report = value;
+        public ObservableCollection<Report> Report { get; } = new ObservableCollection<Report>();
+        #endregion
 
-                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("report"));
-            }
-        }
-        private void addData()
-        {
-            report.Add(new Report
-            {
 
-                Id = 0,
-                Title = "The beautiful lake",
-                Subtitle = "Norway",
-                Image = "https://images.pexels.com/photos/2217365/pexels-photo-2217365.jpeg"
-            });
-            report.Add(new Report
-            {
-
-                Id = 0,
-                Title = "Adventure of snow",
-                Subtitle = "Nepal",
-                Image = "https://images.pexels.com/photos/753772/pexels-photo-753772.jpeg"
-            });
-            report.Add(new Report
-            {
-
-                Id = 0,
-                Title = "Beach is where life is",
-                Subtitle = "Malaysia",
-                Image = "https://images.pexels.com/photos/6023784/pexels-photo-6023784.jpeg"
-            });
-            #endregion
-
-        }
     }
 }
+
