@@ -43,7 +43,7 @@ namespace CiudApp
                 containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>(Pages.ProfilePage);
                 containerRegistry.RegisterForNavigation<ReportPage, ReportViewModel>(Pages.ReportPage);
                 containerRegistry.RegisterForNavigation<ReportFormPage, ReportFormViewModel>(Pages.ReportForm);
-                containerRegistry.RegisterForNavigation<Map, MapViewModel>(Pages.MapPage);
+                containerRegistry.RegisterForNavigation<MapPage, MapViewModel>(Pages.MapPage);
             #endregion
 
         }

@@ -1,10 +1,16 @@
-﻿using Prism.Navigation;
+﻿using CiudApp.Services;
+using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace CiudApp.ViewModels
@@ -12,33 +18,29 @@ namespace CiudApp.ViewModels
     class MapViewModel : BaseViewModel
     {
         #region Commands and Attributes
-        public Double latitude;
-        public Double Latitude
+        IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();
+        
+        public ICommand GetPlacesCommand { get; set; }
+        public ICommand GetLocationNameCommand { get; set; }
+
+        bool isPickupFocused = true;
+
+        string pickupText;
+        public string PickupText
         {
             get
             {
-                return latitude;
+                return pickupText;
             }
 
             set
             {
-                latitude = value;
-                GetNotify(nameof(Latitude));
-            }
-        }
-
-        public Double longitude;
-        public Double Longitude
-        {
-            get
-            {
-                return longitude;
-            }
-
-            set
-            {
-                longitude = value;
-                GetNotify(nameof(Longitude));
+                pickupText = value;
+                if (!string.IsNullOrEmpty(pickupText))
+                {
+                    isPickupFocused = false;
+                    GetPlacesCommand.Execute(pickupText);
+                }
             }
         }
         #endregion
@@ -47,10 +49,37 @@ namespace CiudApp.ViewModels
         #region MapViewModel
         public MapViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            
-            GetLocation();
+
+            GetLocationNameCommand = new Command<Position>(async (position) => await GetLocationName(position));
+            GetPlacesCommand = new Command<string>(async (placeText) => await GetPlacesByName(placeText));
         }
         #endregion
+
+        public async Task GetLocationName(Position position)
+        {
+            try
+            {
+                var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
+                var placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
+                {
+                    PickupText = placemark.FeatureName;
+                }
+                else
+                {
+                    PickupText = string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+        }
+
+        public async Task GetPlacesByName(string placeText)
+        {
+            var places = await googleMapsApi.GetPlaces(placeText);
+        }
 
         #region GetLocation
         /// <summary>
@@ -70,11 +99,11 @@ namespace CiudApp.ViewModels
                     });
                 }
 
-                Position position = new Position(location.Latitude, location.Longitude);
-                MapSpan mapSpan = new MapSpan(position, 0.1, 0.1);
+                //Position position = new Position(location.Latitude, location.Longitude);
+                //MapSpan mapSpan = new MapSpan(position, 0.1, 0.1);
 
-                Latitude = location.Latitude;
-                Longitude = location.Longitude;
+                //Latitude = location.Latitude;
+                //Longitude = location.Longitude;
             } catch (Exception e) { }
         }
         #endregion
