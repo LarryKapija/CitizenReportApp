@@ -1,8 +1,10 @@
 ﻿using CiudApp.Services;
+using CiudApp.Views;
 using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Maps;
 
 namespace CiudApp.ViewModels
@@ -19,11 +22,10 @@ namespace CiudApp.ViewModels
     {
         #region Commands and Attributes
         IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();
-        
-        public ICommand GetPlacesCommand { get; set; }
-        public ICommand GetLocationNameCommand { get; set; }
 
-        bool isPickupFocused = true;
+        public ICommand GetPlacesCommand { get; set; }
+        public ICommand ActualNameCommand { get; set; }
+
 
         string pickupText;
         public string PickupText
@@ -36,43 +38,36 @@ namespace CiudApp.ViewModels
             set
             {
                 pickupText = value;
-                if (!string.IsNullOrEmpty(pickupText))
-                {
-                    isPickupFocused = false;
-                    GetPlacesCommand.Execute(pickupText);
-                }
+                GetNotify(nameof(PickupText));
             }
         }
+
         #endregion
         //Functions:
 
         #region MapViewModel
         public MapViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-
-            GetLocationNameCommand = new Command<Position>(async (position) => await GetLocationName(position));
+            ActualNameCommand = new Command(async () => await GetActualName());
             GetPlacesCommand = new Command<string>(async (placeText) => await GetPlacesByName(placeText));
         }
         #endregion
 
-        public async Task GetLocationName(Position position)
+        public async Task GetActualName()
         {
-            try
+            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+            var location = await Geolocation.GetLocationAsync(request);
+
+            var placemarks = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude);
+            var placemark = placemarks?.FirstOrDefault();
+            if (placemark != null)
             {
-                var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
-                var placemark = placemarks?.FirstOrDefault();
-                if (placemark != null)
-                {
-                    PickupText = placemark.FeatureName;
-                }
-                else
-                {
-                    PickupText = string.Empty;
-                }
+                PickupText = $"{placemark.FeatureName} {placemark.Thoroughfare}, {placemark.SubAdminArea} {placemark.CountryName}";
             }
-            catch (Exception ex)
+            else
             {
-                Debug.WriteLine(ex.ToString());
+                PickupText = string.Empty;
+
             }
         }
 
@@ -80,33 +75,6 @@ namespace CiudApp.ViewModels
         {
             var places = await googleMapsApi.GetPlaces(placeText);
         }
-
-        #region GetLocation
-        /// <summary>
-        /// This function will try a request to know the user current location to start the map there.
-        /// </summary>
-        public async void GetLocation()
-        {
-            try
-            {
-                var location = await Geolocation.GetLastKnownLocationAsync();
-                if (location == null)
-                {
-                    location = await Geolocation.GetLocationAsync(new GeolocationRequest()
-                    {
-                        DesiredAccuracy = GeolocationAccuracy.Medium,
-                        Timeout = TimeSpan.FromSeconds(30)
-                    });
-                }
-
-                //Position position = new Position(location.Latitude, location.Longitude);
-                //MapSpan mapSpan = new MapSpan(position, 0.1, 0.1);
-
-                //Latitude = location.Latitude;
-                //Longitude = location.Longitude;
-            } catch (Exception e) { }
-        }
-        #endregion
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

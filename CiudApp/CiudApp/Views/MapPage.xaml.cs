@@ -49,7 +49,6 @@ namespace CiudApp.Views
                 {
                     map.MoveToRegion(MapSpan.FromCenterAndRadius(
                         new Position(location.Latitude, location.Longitude), Distance.FromMiles(0.3)));
-
                 }
             }
             catch (Exception e)

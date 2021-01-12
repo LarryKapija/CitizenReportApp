@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:Controls="clr-namespace:CiudApp.Controls"
              x:Class="CiudApp.Views.MapPage">
     <ContentPage.Content>
+
         <StackLayout>
-            <Entry Placeholder="Ingrese la ubicación del reporte" />
-            <Button Text="Ingresar esta ubicación" Command="{Binding  GetLocationNameCommand}"
-                    CommandParameter="{Binding Path=CameraPosition.Target, Source={x:Reference map}}"/>
-            <maps:Map x:Name="map"/>
-            
+            <Label Text="{Binding PickupText}" />
+            <maps:Map x:Name="map" />
+            <Button Text="Ingresar esta ubicación" Command="{Binding  ActualNameCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

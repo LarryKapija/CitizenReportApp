@@ -148,4 +148,7 @@
       <Name>CiudApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_icon.svg" />
+  </ItemGroup>
 </Project>
