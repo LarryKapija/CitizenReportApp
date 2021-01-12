@@ -4,22 +4,60 @@
              x:Class="CiudApp.Views.ReportPage"
              Title="Reportes">
 
-    <ScrollView>
-        <StackLayout>
-            <Button Command="{Binding NavigationCommand}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" CornerRadius="50"/>
 
-            <ListView >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell
-                            ImageSource="{Binding image}"
-                            Text="{Binding text}"
-                            Detail="{Binding detail}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView> 
-        </StackLayout>
+    <Grid ColumnDefinitions="*,*">
 
-    </ScrollView>
+
+        <CarouselView
+            Grid.ColumnSpan="2"
+            Loop="False"
+            ItemsSource="{Binding Report}" >
+
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Frame
+                           BackgroundColor="White" Padding="0"
+                           HasShadow="True" Margin="0" CornerRadius="30">
+                            <Grid>
+                                <StackLayout  BackgroundColor="Black">
+                                    <Image Source="{Binding Image}" 
+                                    HeightRequest="350" Opacity="0.6"
+                                    Aspect="AspectFill"/>
+                                </StackLayout>
+                                <StackLayout Margin="0,0,0,10">
+                                    <Label 
+                                        Text="{Binding Title}" 
+                                        TextColor="White" 
+                                        FontSize="18"
+                                        FontAttributes="None" 
+                                        Margin="15,0"
+                                        VerticalOptions="EndAndExpand"/>
+
+                                    <StackLayout Orientation="Horizontal"  Margin="15,-8,0,0">
+
+                                        <Label 
+                                            Text="{Binding Detail}" 
+                                            TextColor="White" 
+                                            FontSize="14"
+                                            FontAttributes="None"
+                                            VerticalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <Button 
+            Grid.Column="1"
+            Command="{Binding NavigationCommand}" 
+            HorizontalOptions="EndAndExpand" 
+            VerticalOptions="EndAndExpand"
+            CornerRadius="50"/>
+
+    </Grid>
 
 </ContentPage>

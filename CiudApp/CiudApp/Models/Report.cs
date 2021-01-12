@@ -6,18 +6,19 @@ using Xamarin.Essentials;
 
 namespace CiudApp.Models
 {
-    class Report
+    public class Report
     {
+        public int Id { get; set; }
         public String Location { get; set; }
         public String Title { get; set; }
         public String Subtitle { get; set; }
-        public FileResult Image { get; set; } //provisional
+        public String Image { get; set; } //provisional
         public String Description { get; set; }
         public short Status { get; set; }
 
         //Functions:
         #region Report
-        public Report(String location, String title, String subtitle,
+        /*public Report(String location, String title, String subtitle,
                       FileResult image, String description)
         {
             Location = location;
@@ -26,7 +27,7 @@ namespace CiudApp.Models
             Image = image;
             Description = description;
             Status = 0;
-        }
+        }*/
         #endregion
 
         #region ChangeStatus

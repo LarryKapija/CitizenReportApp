@@ -5,6 +5,8 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,8 +18,8 @@ namespace CiudApp.ViewModels
     {
 
         #region Commands and Attributes:
-        public ICommand NavegateCommand { get;  }
-        
+        public ICommand NavegateCommand { get; }
+
         public String title;
         public String Title
         {
@@ -76,8 +78,8 @@ namespace CiudApp.ViewModels
             }
         }
 
-        public FileImageSource imageSource;
-        public FileImageSource ImageSource
+        public String imageSource;
+        public String ImageSource
         {
             get
             {
@@ -98,17 +100,19 @@ namespace CiudApp.ViewModels
         public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             ReportNumber = 0; //This is for the example, this number should come from the db.
-            NavegateCommand = new Command(async () => await Navigate());
+            //addData();
+
+            // NavegateCommand = new Command(async () => await Navigate());
         }
 
 
         #endregion
 
         #region Navigate
-        async Task Navigate()
-        {
-            await NavigationService.NavigateAsync(Pages.ProfilePage);
-        }
+        //async Task Navigate()
+        //{
+        //    await NavigationService.NavigateAsync(Pages.ProfilePage);
+        //}
         #endregion
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
@@ -119,37 +123,34 @@ namespace CiudApp.ViewModels
         #region OnNavigatedTo
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if(parameters.Count == 2)
-            {
-                if (parameters.GetValue<bool>("reportCreated"))
-                {
-                    //Change the frame of the newest report.
-                    IList<Report> reports = parameters.GetValue<IList<Report>>("reportList");
-                    Report lastReport = reports.Last();
 
-                    ReportTitle = lastReport.Title;
-                    Progress = $"{lastReport.Status.ToString()}%";
-                    ImageSource = lastReport.Image.FullPath;
-                    //ReportNumber++;
-
-                    String display = "";
-                    //Display all elements of the list.
-                    foreach(var element in reports)
-                    {
-                        display += $"{element.Title}\n";
-                    }
-                    PageDialog.DisplayAlertAsync("Elements from de list",
-                        display, "Ok");
-                }
-            }
-            else
+            if (parameters.TryGetValue("user", out User user))
             {
-                //Executed when the user come from the Log In.
                 User = parameters.GetValue<User>("user");
                 Title = $"Bienvenido {User.Name}";
             }
+            else if (parameters.TryGetValue("report", out Report reports))//GetValue<bool>("reportCreated"))
+            {
+                Report.Add(reports);
+
+                String display = "";
+                //Display all elements of the list.
+                foreach(var element in Report)
+                {
+                    display += $"{element.Title}\n";
+                }
+                PageDialog.DisplayAlertAsync("Elements from de list", display, "Ok");
+            }
+
         }
         #endregion
 
+        #region addData()
+
+        public ObservableCollection<Report> Report { get; } = new ObservableCollection<Report>();
+        #endregion
+
+
     }
 }
+

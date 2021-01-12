@@ -5,7 +5,7 @@
              Title="Inicio">
     
     <ScrollView>
-        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="15" >
+        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*,*,*" RowSpacing="15" >
 
             
             <Label Text="{Binding Title}" VerticalOptions="End" Padding="15,0,0,0" Grid.ColumnSpan="3" FontSize="Title" Margin="0,75,0,10" />
@@ -29,26 +29,56 @@
                 </StackLayout>
             </Frame>
 
-            <Button Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" 
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="End" 
-                    CornerRadius="75" 
-                    Command="{Binding NavegateCommand}"
-                    CommandParameter="Profile"/>
+            <CarouselView Margin="0" ItemsSource="{Binding Report}" Loop="False" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" HeightRequest="300" PeekAreaInsets="2">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate >
+                        <StackLayout>
+                            <Frame 
+                            BackgroundColor="White" Padding="0"
+                            HeightRequest="280" WidthRequest="280"
+                            HasShadow="True" Margin="10" CornerRadius="10"
+                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-            <Frame Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                <AbsoluteLayout>
-                    <Image Source="{Binding ImageSource}" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill" />
-                    <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
-                        <Label Text="Estado del ultimo reporte" FontSize="Subtitle" TextColor="White"/>
+                            <Grid 
+                                RowDefinitions="*,*,*" >
 
-                        <Label Text="{Binding ReportTitle}" TextColor="White"/>
-                        <ProgressBar/>
-                        <Label Text="{Binding Progress}" TextColor="White"/>
-                    </StackLayout>
-                </AbsoluteLayout>
-            </Frame>
+                                <StackLayout
+                                    Grid.RowSpan="3"
+                                    BackgroundColor="Black"  >
 
+                                    <Image
+                                        Opacity="0.6"
+                                        HeightRequest="350" 
+                                        Aspect="AspectFill"
+                                        Source="{Binding Image}" />
+
+                                </StackLayout>
+
+                                <Frame 
+                                    Grid.Row="1"
+                                    Opacity="0.6"
+                                    CornerRadius="40"
+                                    VerticalOptions="Start"
+                                    BackgroundColor="#00FFCB" >
+
+                                    <Label Text="{Binding Title}" 
+                                           Margin="15,0"
+                                           FontSize="18"
+                                           TextColor="Black" 
+                                           FontAttributes="None" 
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="CenterAndExpand" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                        </StackLayout>
+
+
+                        
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            
             <Frame Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3">
                 <StackLayout>
                     <Label Text="Proximos Eventos" FontSize="Subtitle" />

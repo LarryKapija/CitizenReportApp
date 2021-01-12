@@ -52,7 +52,7 @@ namespace CiudApp
         #region OnInitialized
         protected override async void OnInitialized()
         {
-            await NavigationService.NavigateAsync(Pages.LogIn);
+            await NavigationService.NavigateAsync(Pages.MainPage);
         }
         #endregion
     }
