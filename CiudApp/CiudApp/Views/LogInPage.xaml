@@ -3,16 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CiudApp.Views.LogInPage">
     <ContentPage.Content>
-        <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*" >
-
+        <Grid RowDefinitions="*,*,*,*,*,*" >
+            <Label Text="Iniciar Sesión" FontSize="Large" Grid.Row="0"/>
             <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}" 
-                    Grid.Row="0"/>
-            <!--Just for the example
-            <Label Text="{Binding Label}"/>
-            <Image Source="{Binding Image}" -->
-            <Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="1"/>
-            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}"
-                    Grid.Row="2"/>
+                    Grid.Row="1"/>
+            <Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="2"/>
+            <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" Grid.Row="3" />
+            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}" Grid.Row="4"/>
+            <Frame Grid.Row="5" HorizontalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SignInCommand}" />
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Label Text="¿Olvidaste tu contraseña?" TextColor="Blue"/>
+                    <Label Text="Registrarse" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiudApp.Android", "CiudApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiudApp.iOS", "CiudApp.iOS\CiudApp.iOS.csproj", "{77D04B89-423F-43BE-98EF-4B4F2A0147DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiudApp", "CiudApp\CiudApp.csproj", "{82015D9B-EF58-4C87-B73C-ABE46B91FFE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CiudApp", "CiudApp\CiudApp.csproj", "{82015D9B-EF58-4C87-B73C-ABE46B91FFE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

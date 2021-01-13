@@ -92,7 +92,7 @@ namespace CiudApp.ViewModels
                 GetNotify(nameof(ImageSource));
             }
         }
-        public User User { get; set; }
+        public Models.User User { get; set; }
         #endregion
 
         //Functions:
@@ -124,9 +124,9 @@ namespace CiudApp.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
 
-            if (parameters.TryGetValue("user", out User user))
+            if (parameters.TryGetValue("user", out Models.User user))
             {
-                User = parameters.GetValue<User>("user");
+                User = parameters.GetValue<Models.User>("user");
                 Title = $"Bienvenido {User.Name}";
             }
             else if (parameters.TryGetValue("report", out Report reports))//GetValue<bool>("reportCreated"))

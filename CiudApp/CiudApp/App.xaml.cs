@@ -34,16 +34,17 @@ namespace CiudApp
             
 
             #region Pages
-                containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
-                containerRegistry.RegisterForNavigation<AccountConfigurationPage, AccountConfigurationViewModel>(Pages.AccountConfigurationPage);
-                containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(Pages.HomePage);
-                containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>(Pages.LogIn);
-                containerRegistry.RegisterForNavigation<MainPage>(Pages.MainPage);
-                containerRegistry.RegisterForNavigation<NewEventPage, NewEventViewModel>("NewEvent");
-                containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>(Pages.ProfilePage);
-                containerRegistry.RegisterForNavigation<ReportPage, ReportViewModel>(Pages.ReportPage);
-                containerRegistry.RegisterForNavigation<ReportFormPage, ReportFormViewModel>(Pages.ReportForm);
-                containerRegistry.RegisterForNavigation<MapPage, MapViewModel>(Pages.MapPage);
+            containerRegistry.RegisterForNavigation<NavigationPage>("NavigationPage");
+            containerRegistry.RegisterForNavigation<AccountConfigurationPage, AccountConfigurationViewModel>(Pages.AccountConfigurationPage);
+            containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(Pages.HomePage);
+            containerRegistry.RegisterForNavigation<LogInPage, LogInViewModel>(Pages.LogIn);
+            containerRegistry.RegisterForNavigation<MainPage>(Pages.MainPage);
+            containerRegistry.RegisterForNavigation<NewEventPage, NewEventViewModel>("NewEvent");
+            containerRegistry.RegisterForNavigation<ProfilePage , ProfileViewModel>(Pages.ProfilePage);
+            containerRegistry.RegisterForNavigation<ReportPage, ReportViewModel>(Pages.ReportPage);
+            containerRegistry.RegisterForNavigation<ReportFormPage, ReportFormViewModel>(Pages.ReportForm);
+            containerRegistry.RegisterForNavigation<MapPage, MapViewModel>(Pages.MapPage);
+            containerRegistry.RegisterForNavigation<SingInPage, SingInViewModel>(Pages.SingIn);
             #endregion
 
         }
@@ -52,7 +53,7 @@ namespace CiudApp
         #region OnInitialized
         protected override async void OnInitialized()
         {
-            await NavigationService.NavigateAsync(Pages.MainPage);
+            await NavigationService.NavigateAsync(Pages.LogIn);
         }
         #endregion
     }

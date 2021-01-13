@@ -14,41 +14,11 @@ namespace CiudApp.ViewModels
     {
         #region Commands and Atributtes
         public ICommand GoogleLogIn { get; }
+        public ICommand LogInCommand { get; }
+        public ICommand SignInCommand { get; }
 
-        #region Just for the example
-        public String label;
-        public String Label
-        {
-            get
-            {
-                return label;
-            }
-
-            set
-            {
-                label = value;
-                GetNotify(nameof(Label));
-            }
-        }
-
-        public Uri img;
-        public Uri Image
-        {
-            get
-            {
-                return img;
-            }
-
-            set
-            {
-                img = value;
-                GetNotify(nameof(Image));
-            }
-        }
-        #endregion
-
-        internal User user { get; set; }
-        #endregion
+        internal Models.User user { get; set; }
+        
         public String name;
         public String Name
         {
@@ -62,14 +32,30 @@ namespace CiudApp.ViewModels
                 GetNotify(nameof(Name));
             }
         }
-        public ICommand LogInCommand { get; }
+
+        public String password;
+        public String Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+                GetNotify(nameof(Password));
+            }
+        }
+        #endregion
 
         #region LogInViewModel
         public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-             user = new User();
+            user = new Models.User();
             GoogleLogIn = new Command(async () => await GoogleCheck());
             LogInCommand = new Command(async () => await LogIn());
+            SignInCommand = new Command(async () => await NavigateTo());
         }
         #endregion
 
@@ -119,11 +105,11 @@ namespace CiudApp.ViewModels
 
         }
 
-        private async void OnLogInCompleted(object sender, GoogleClientResultEventArgs<GoogleUser> loginEventArgs)
+        private async void OnLogInCompleted(object sender, GoogleClientResultEventArgs<Plugin.GoogleClient.Shared.GoogleUser> loginEventArgs)
         {
             if (loginEventArgs.Data != null)
             {
-                GoogleUser googleUser = loginEventArgs.Data;
+                Plugin.GoogleClient.Shared.GoogleUser googleUser = loginEventArgs.Data;
                 user.Name = googleUser.Name;
                 user.GivenName = googleUser.GivenName;
                 user.FamilyName = googleUser.FamilyName;
@@ -139,12 +125,19 @@ namespace CiudApp.ViewModels
 
         #endregion
 
+        #region LogIn
         public async Task LogIn()
         {
             user.Name = Name;
             NavigationParameters parameter = new NavigationParameters();
             parameter.Add("user", user);
             await NavigationService.NavigateAsync($"/{Pages.MainPage}", parameter);
+        }
+        #endregion
+
+        public async Task NavigateTo()
+        {
+            await NavigationService.NavigateAsync(Pages.SingIn);
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

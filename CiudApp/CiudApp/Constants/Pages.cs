@@ -11,5 +11,6 @@
         public const string ProfilePage = nameof(ProfilePage);
         public const string ReportPage = nameof(ReportPage);
         public const string ReportForm = nameof(ReportForm);
+        public const string SingIn = nameof(SingIn);
     }
 }
