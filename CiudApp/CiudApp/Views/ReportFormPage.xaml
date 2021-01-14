@@ -10,8 +10,8 @@
 
             <Label Text="Reporte" TextTransform="Uppercase" FontSize="Title" VerticalOptions="Center"
                        Grid.Row="0" Grid.Column="0" />
-            <Button Text="Elegir la ubicación actual" Grid.Row="1" Grid.ColumnSpan="2" />
-            <Button Text="Abrir Maps" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding GetLocationCommand}" />
+            <Button Text="Elegir la ubicación actual" Grid.Row="1" Grid.ColumnSpan="2" Command="{Binding GetLocationCommand}"/>
+            <Label Text="{Binding Location}" Grid.Row="2" Grid.ColumnSpan="2"/>
 
             <Label Text="Categoría" FontSize="Large" Grid.Row="3" Grid.Column="0" />
             <!--<Entry Text="Evento" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />

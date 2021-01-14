@@ -149,6 +149,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\location_icon.svg" />
+    <BundleResource Include="Resources\location_red_icon.png" />
   </ItemGroup>
 </Project>

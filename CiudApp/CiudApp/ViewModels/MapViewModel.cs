@@ -41,12 +41,7 @@ namespace CiudApp.ViewModels
             set
             {
                 pickupText = value;
-                //GetNotify(nameof(PickupText));
-                if (!string.IsNullOrEmpty(pickupText))
-                {
-                    isPickupFocused = true;
-                    GetPlacesCommand.Execute(pickupText);
-                }
+                GetNotify(nameof(PickupText));
             }
         }
 
@@ -70,11 +65,23 @@ namespace CiudApp.ViewModels
             }
         }
 
-        public ObservableCollection<GooglePlaceAutoCompletePrediction> Places { get; set; }
+        public ObservableCollection<GooglePlaceAutoCompletePrediction> places;
+        public ObservableCollection<GooglePlaceAutoCompletePrediction> Places {
+            get
+            {
+                return places;
+            }
+            set
+            {
+                places = value;
+                GetNotify(nameof(Places));
+            } 
+        }
         public ObservableCollection<GooglePlaceAutoCompletePrediction> RecentPlaces { get; set; }
 
         public bool ShowRecentPlaces { get; set; }
         bool isPickupFocused = true;
+        bool searchedPlace = false;
 
         string originText;
         public string OriginText
@@ -99,29 +106,62 @@ namespace CiudApp.ViewModels
         #region MapViewModel
         public MapViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            PickupText = "Ingrese una ubicación";
+
             ActualNameCommand = new Command(async () => await GetActualName());
             GetPlacesCommand = new Command<string>(async (placeText) => await GetPlacesByName(placeText));
             GetPlacesDetailCommand = new Command<GooglePlaceAutoCompletePrediction>(async (param) => await GetPlacesDetail(param));
             SearchCommand = new Command(async () => await NavigateTo());
+
+            RecentPlaces = new ObservableCollection<GooglePlaceAutoCompletePrediction>();
         }
         #endregion
 
         public async Task GetActualName()
         {
-            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-            var location = await Geolocation.GetLocationAsync(request);
+            double latitude;
+            double longitude;
+            
+            if (!searchedPlace)
+            {
+                await GetCurrentLocation();
+            }
 
-            var placemarks = await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude);
+            latitude = Convert.ToDouble(destinationLatitude);
+            longitude = Convert.ToDouble(destiantionLongitude);
+
+            var placemarks = await Geocoding.GetPlacemarksAsync(latitude, longitude);
             var placemark = placemarks?.FirstOrDefault();
             if (placemark != null)
             {
-                PickupText = $"{placemark.FeatureName} {placemark.Thoroughfare}, {placemark.SubAdminArea} {placemark.CountryName}";
+                if (placemark.FeatureName.Equals("Unnamed Road"))
+                {
+                    PickupText = $"{placemark.SubLocality}, {placemark.SubAdminArea} {placemark.CountryName}";
+                }
+                else
+                {
+                    PickupText = $"{placemark.Thoroughfare} {placemark.SubLocality}, {placemark.SubAdminArea} {placemark.CountryName}";
+                }
+
             }
             else
             {
                 PickupText = string.Empty;
 
             }
+
+            NavigationParameters parameter = new NavigationParameters();
+            parameter.Add("location", PickupText);
+            await NavigationService.GoBackAsync(parameter);
+        }
+
+        private async Task GetCurrentLocation()
+        {
+            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+            var location = await Geolocation.GetLocationAsync(request);
+
+            destinationLatitude = $"{location.Latitude}";
+            destiantionLongitude = $"{location.Longitude}";
         }
 
         public async Task GetPlacesByName(string placeText)
@@ -153,10 +193,10 @@ namespace CiudApp.ViewModels
                     destiantionLongitude = $"{place.Longitude}";
 
                     RecentPlaces.Add(placeA);
-
-                    //En chequeo todavia
-                    await NavigationService.GoBackAsync();
                     CleanFields();
+
+                    searchedPlace = true;
+                    await GetActualName();
                 }
             }
         }
@@ -180,7 +220,10 @@ namespace CiudApp.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            
+            if (parameters.Count > 0)
+            {
+                NavigationService.GoBackAsync(parameters);
+            }
         }
     }
 }

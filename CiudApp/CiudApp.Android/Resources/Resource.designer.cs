@@ -15183,7 +15183,7 @@ namespace CiudApp.Droid
 			public const int ic_mtrl_chip_close_circle = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int location_icon = 2131165324;
+			public const int location_red_icon = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
 			public const int mtrl_dialog_background = 2131165325;

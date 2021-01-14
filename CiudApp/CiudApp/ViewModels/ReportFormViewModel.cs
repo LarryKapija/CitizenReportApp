@@ -92,6 +92,21 @@ namespace CiudApp.ViewModels
             }
         }
 
+        public string location;
+        public string Location
+        {
+            get
+            {
+                return location;
+            }
+
+            set
+            {
+                location = value;
+                GetNotify(nameof(Location));
+            }
+        }
+
         public FileResult Image { get; set; }
 
         readonly IList<Report> reportList = new List<Report>();
@@ -191,12 +206,15 @@ namespace CiudApp.ViewModels
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
-
+            
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-
+            if (parameters.Count > 0)
+            {
+                Location = parameters.GetValue<string>("location");
+            }
         }
     }
 }
