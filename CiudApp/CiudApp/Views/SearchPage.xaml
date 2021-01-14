@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.SearchPage" >
+    <!--FocusOriginCommand="{Binding FocusOriginCommand}"--> 
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,*,*">
+            <StackLayout Grid.Row="0"  
+                             Padding="10"
+                             BackgroundColor="LightGray"
+                             Orientation="Horizontal">
+                <Entry Placeholder="Enter Pickup"
+                               Text="{Binding PickupText}"
+                               FontSize="18"
+                               x:Name="originEntry"
+                               ClassId="origin"
+                               FontAttributes="Italic"
+                               ReturnType="Search"
+                               HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         Padding="10"
+                             BackgroundColor="LightGray"
+                             Orientation="Horizontal">
+                <Entry Placeholder="Busque un lugar" Text="{Binding OriginText}"
+                       FontSize="18" HorizontalOptions="FillAndExpand" 
+                       FontAttributes="Italic" x:Name="destinationEntry"/>
+            </StackLayout>
+            <ListView Grid.Row="2" VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      BackgroundColor="Transparent"
+                      Footer="" SelectedItem="{Binding PlaceSelected, Mode=TwoWay}"
+                      ItemsSource="{Binding Places}"
+                      HasUnevenRows="true">
+                <ListView.Triggers>
+                    <DataTrigger TargetType="ListView" Binding="{Binding ShowRecentPlaces}"
+                                 Value="True" >
+                        <Setter Property="ItemsSource" Value="{Binding Places}" />
+                    </DataTrigger>
+                </ListView.Triggers>
+                <ListView.Header>
+                    <StackLayout  x:Name="recentSearchText"
+                                      IsVisible="{Binding ShowRecentPlaces}">
+                        <Label LineBreakMode="WordWrap"
+                                 FontAttributes="Bold"
+                                 Margin="20,10"
+                                 x:Name="recentSearch"
+                                 Text="History"/>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowDefinitions="*,*" 
+                                  RowSpacing="2" 
+                                  ColumnSpacing="2"
+                                  Padding="15" >
+                                <Label LineBreakMode="MiddleTruncation"
+                                       Text="{Binding StructuredFormatting.MainText}"
+                                       Grid.Row="0" />
+
+                                <Label LineBreakMode="MiddleTruncation"
+                                       Text="{Binding StructuredFormatting.SecondaryText}" 
+                                       TextColor="Gray" 
+                                       Grid.Row="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

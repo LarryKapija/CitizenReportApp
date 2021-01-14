@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:Controls="clr-namespace:CiudApp.Controls"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" 
              x:Class="CiudApp.Views.MapPage">
     <ContentPage.Content>
 
         <StackLayout>
-            <Label Text="{Binding PickupText}" />
+            <!--<Label Text="{Binding PickupText}" />-->
+            <Frame>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                </Frame.GestureRecognizers>
+                <Label Text="Buscar una ubicación" />
+            </Frame>
             <maps:Map x:Name="map" />
             <Button Text="Ingresar esta ubicación" Command="{Binding  ActualNameCommand}"/>
         </StackLayout>
