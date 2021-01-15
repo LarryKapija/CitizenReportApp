@@ -4,14 +4,15 @@
             x:Class="CiudApp.Views.MainPage"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
             xmlns:pages="clr-namespace:CiudApp.Views"
+            SelectedTabColor="#27E192"
             android:TabbedPage.ToolbarPlacement="Bottom" 
             Title="MainTabbedPage">
   <!--Pages can be added as references or inline-->
 
     <TabbedPage.Children>
-        <pages:HomePage/>
-        <pages:ReportPage/>
-        <pages:ProfilePage/>
+        <pages:HomePage IconImageSource="Icons/home_icon.png"/>
+        <pages:ReportPage IconImageSource="Icons/report_icon.png"/>
+        <pages:ProfilePage IconImageSource="Icons/user_icon.png"/>
     </TabbedPage.Children>
 
 </TabbedPage>

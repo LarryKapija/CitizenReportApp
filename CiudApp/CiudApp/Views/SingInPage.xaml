@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <Grid RowDefinitions="*,*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*">
             <Label Text="Registrarse" FontSize="Large" Grid.Row="0" Grid.ColumnSpan="2"/>
-            <Button Text="Ingresar con Google" Grid.Row="1" Grid.ColumnSpan="4"/>
+            <!--<Button Text="Ingresar con Google" Grid.Row="1" Grid.ColumnSpan="4" />-->
             <Entry Placeholder="Ingrese su nombre" Text="{Binding Name}" Grid.Row="2" Grid.ColumnSpan="4"/>
             <Entry Placeholder="Ingrese su contraseña" IsPassword="True" Text="{Binding Password}" 
                    Grid.Row="3"  Grid.ColumnSpan="4"/>

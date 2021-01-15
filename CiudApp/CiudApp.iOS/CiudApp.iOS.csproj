@@ -151,4 +151,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\location_red_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\report_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\google.PNG" />
+  </ItemGroup>
 </Project>

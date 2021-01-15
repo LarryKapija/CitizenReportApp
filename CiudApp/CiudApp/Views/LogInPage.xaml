@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Views="clr-namespace:CiudApp.Views.Views"
              x:Class="CiudApp.Views.LogInPage">
     <ContentPage.Content>
-        <Grid RowDefinitions="*,*,*,*,*,*" >
+        <Grid RowDefinitions="*,*,*,*,*,*" Margin="50,0">
             <Label Text="Iniciar Sesión" FontSize="Large" Grid.Row="0"/>
             <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}" 
-                    Grid.Row="1"/>
-            <Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="2"/>
+                    Grid.Row="1" ImageSource="Icons/google.png" Style="{StaticResource GoogleCheck}"/>
+            <!--<Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="2"/>-->
+            <Views:DataEntry Grid.Row="2" />
             <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" Grid.Row="3" />
             <Button Text="Iniciar sesión" Command="{Binding LogInCommand}" Grid.Row="4"/>
             <Frame Grid.Row="5" HorizontalOptions="Center">

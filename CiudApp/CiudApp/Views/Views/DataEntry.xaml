@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CiudApp.Views.Views.DataEntry"
+             RowDefinitions="*,*" ColumnDefinitions="40,*,*"
+             RowSpacing="10" >
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+           Text="Email" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+           HorizontalOptions="Start"/>
+    <Image Grid.Row="1" Grid.Column="0" 
+           Source="Icons/user_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+           HeightRequest="40" Margin="5,10"/>
+    <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+           Placeholder="ejemplo@correo.com" />
+</Grid>

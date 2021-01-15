@@ -4,6 +4,13 @@
              x:Class="CiudApp.App"
              xmlns:prism="http://prismlibrary.com">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="GoogleCheck">
+                <Setter Property="BackgroundColor" Value="#f14336" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Margin" Value="0,30" />
+                <Setter Property="CornerRadius" Value="25" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
