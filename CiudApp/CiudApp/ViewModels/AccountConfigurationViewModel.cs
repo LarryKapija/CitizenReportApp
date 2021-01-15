@@ -188,6 +188,7 @@ namespace CiudApp.ViewModels
             parameter.Add("address", Address);
             parameter.Add("edit", true);
 
+            await PageDialog.DisplayAlertAsync("Los cambios han sido guardados", "", "Ok");
             await NavigationService.SelectTabAsync(Pages.HomePage, parameter);
         }
 
