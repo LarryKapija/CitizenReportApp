@@ -4,9 +4,9 @@
              x:Class="CiudApp.Views.LogInPage">
     <ContentPage.Content>
         <Grid RowDefinitions="*,*,*,*,*,*" Margin="50,20">
-            <Label Text="Iniciar Sesión" Grid.Row="0" Style="{StaticResource PageTitle}"/>
+            <Label Text="Iniciar Sesión" Grid.Row="0" />
             <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}"
-                    BackgroundColor="#f14336" CornerRadius="25" Margin="0,30" TextColor="White"
+                    BackgroundColor="#f14336" CornerRadius="25" Margin="0,20" TextColor="White"
                     Grid.Row="1" ImageSource="Icons/google.png"/>
             <!--<Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="2"/>-->
             <!--<Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" Grid.Row="3" />-->
@@ -34,7 +34,7 @@
                        Placeholder="Ingrese su contraseña" Text="{Binding Password}" IsPassword="True"/>
             </Grid>
             
-            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}" Grid.Row="4" Style="{StaticResource StartButton}"/>
+            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}" Grid.Row="4" />
             <Frame Grid.Row="5" HorizontalOptions="Center" BackgroundColor="Transparent">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SignInCommand}" />

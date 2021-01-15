@@ -33,13 +33,14 @@
                 <CarouselView.ItemTemplate>
                     <DataTemplate >
                         <StackLayout>
+                            <Label Text="Estado del último reporte" FontSize="Large"/>
                             <Frame 
                             BackgroundColor="White" Padding="0"
                             HeightRequest="280" WidthRequest="280"
                             HasShadow="True" Margin="10" CornerRadius="10"
                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
-                            <Grid 
+                                
+                                <Grid 
                                 RowDefinitions="*,*,*" >
 
                                 <StackLayout
