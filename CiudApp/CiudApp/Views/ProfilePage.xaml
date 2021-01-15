@@ -10,7 +10,7 @@
 
                 <Label Text="Perfil" TextTransform="Uppercase" FontSize="Medium"
                        Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Button Text="Editar" Grid.Row="0" Grid.Column="2" Command="{Binding ConfigurationCommand}" CommandParameter="AccountConfiguration" />
+                <Button Text="Editar" Grid.Row="0" Grid.Column="2" Command="{Binding  ConfigurationCommand}" />
                 
 
 

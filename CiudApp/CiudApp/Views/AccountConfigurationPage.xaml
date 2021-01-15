@@ -2,83 +2,90 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CiudApp.Views.AccountConfigurationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="InformationTitle">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+            <Style TargetType="Entry" x:Key="InformationEntry">
+                <Setter Property="Grid.ColumnSpan" Value="2" />
+                <Setter Property="Margin" Value="10,0" />
+            </Style>
+            <Style TargetType="Image" x:Key="PencilIcon" >
+                <Setter Property="Source" Value="Icons/pen_icon.png"/>
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="Margin" Value="0,15,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,*" ColumnDefinitions="*,*,*,*">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*"
+              Margin="30,10 ">
             <Frame Grid.ColumnSpan="4">
-                <Label Text="PERFIL"/>
+                <Label Text="Perfil" Style="{StaticResource PageTitle}"/>
             </Frame>
 
             <Label Grid.Row="1" Grid.ColumnSpan="4" Text="Configuracion de la cuenta" FontSize="Large"/>
 
-            <Image Grid.Row="2" Grid.ColumnSpan="4"/>
-            <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+            <Button Text="Guardar" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource StartButton}"
+                    Command="{Binding SaveCommand}" VerticalOptions="End" />
+            
+            <Image Grid.Row="3" Grid.ColumnSpan="4" Source="{Binding Image}"/>
+            <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Text="Cambiar foto"
+                    Command="{Binding ImageCommand}"/>
 
-            <Label Grid.Row="3" Grid.ColumnSpan="4" Text="Informacion de la cuenta" FontSize="Large"/>
+            <Label Grid.Row="5" Grid.ColumnSpan="4" Text="Informacion de la cuenta" FontSize="Large"/>
 
-            <Frame Grid.Row="4" Grid.ColumnSpan="4" >
-                <StackLayout>
-                    <Label Text="Informacion Basica" FontSize="Large"/>
+            <Frame Grid.Row="6" Grid.ColumnSpan="4" >
+                <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*">
+                    <Label Text="Nombre de usuario" Grid.Row="0" Grid.ColumnSpan="2"
+                           Style="{StaticResource InformationTitle}"  />
+                    <Entry Text="Pedro Abinader" Grid.Row="1" Style="{StaticResource InformationEntry}"/>
+                    <Image Style="{StaticResource PencilIcon}" 
+                           Grid.Row="1" Grid.Column="2"/>
 
-                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
-                        <Label Text="Nombre de usuario" FontSize="Medium" FontAttributes="Bold" />
-                        <Label Text="Pedro Abinader" Grid.Row="1"/>
+                    <Label Text="Correo electrónico" Grid.Row="2" Grid.ColumnSpan="2"
+                           Style="{StaticResource InformationTitle}"  />
+                    <Entry Text="example@mail.com" Grid.Row="3" Style="{StaticResource InformationEntry}"/>
+                    <Image Style="{StaticResource PencilIcon}" 
+                           Grid.Row="3" Grid.Column="2"/>
 
-                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
-                    </Grid>
+                    <Label Text="Número de teléfono" Grid.Row="4" Grid.ColumnSpan="2"
+                           Style="{StaticResource InformationTitle}"  />
+                    <Entry Text="829-888-8888" Grid.Row="5" Style="{StaticResource InformationEntry}"/>
+                    <Image Style="{StaticResource PencilIcon}" 
+                           Grid.Row="5" Grid.Column="2"/>
 
-                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
-                        <Label Text="Correo electronico" FontSize="Medium" FontAttributes="Bold" />
-                        <Label Text="example@mail.com" Grid.Row="1"/>
-
-                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
-                    </Grid>
-
-                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto" >
-                        <Label Text="Numero de telefono" FontSize="Medium" FontAttributes="Bold" Grid.ColumnSpan="2" />
-                        <Label Text="829-888-8888" Grid.Row="1"/>
-
-                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
-                        <Button Grid.RowSpan="2" Grid.Column="2" VerticalOptions="End"/>
-                    </Grid>
-
-                </StackLayout>
+                </Grid>
             </Frame>
 
 
-            <Frame Grid.Row="5" Grid.ColumnSpan="4" >
-                <StackLayout >
-                    <Label Text="Informacion Complementaria" FontSize="Large"/>
+            <Label Text="Informacion Complementaria" FontSize="Large" Grid.Row="7" Grid.ColumnSpan="4"/>
+            <Frame Grid.Row="8" Grid.ColumnSpan="4">
+                <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*">
+                    <Label Text="Sitio web" Grid.Row="0" Grid.ColumnSpan="2"
+                           Style="{StaticResource InformationTitle}"  />
+                    <Entry Text="www.misitio.com" Grid.Row="1" Style="{StaticResource InformationEntry}"/>
+                    <Image Style="{StaticResource PencilIcon}" 
+                           Grid.Row="1" Grid.Column="2"/>
 
+                    <Label Text="Presentación" Grid.Row="2" Grid.ColumnSpan="2"
+                           Style="{StaticResource InformationTitle}"  />
+                    <Entry Text="Soy un tipo bueno" Grid.Row="3" Style="{StaticResource InformationEntry}"/>
+                    <Image Style="{StaticResource PencilIcon}" 
+                           Grid.Row="3" Grid.Column="2"/>
 
-                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
-                        <Label Text="Sitio web" FontSize="Medium" FontAttributes="Bold" />
-                        <Label Text="www.misitio.com" Grid.Row="1"/>
+                    <Label Text="Dirección" Grid.Row="4" Grid.ColumnSpan="2"
+                           Style="{StaticResource InformationTitle}"  />
+                    <Entry Text="Mi casa" Grid.Row="5" Style="{StaticResource InformationEntry}"/>
+                    <Image Style="{StaticResource PencilIcon}" 
+                           Grid.Row="5" Grid.Column="2"/>
 
-                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
-                    </Grid>
-
-                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto" >
-                        <Label Text="Presentacion" FontSize="Medium" FontAttributes="Bold" />
-                        <Label Text="Soy un tipo bueno" Grid.Row="1"/>
-
-                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
-                    </Grid>
-
-                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto" >
-                        <Label Text="Direccion" FontSize="Medium" FontAttributes="Bold" Grid.ColumnSpan="2" />
-                        <Label Text="Mi casa" Grid.Row="1"/>
-
-                        <Button Grid.RowSpan="2" Grid.Column="1" VerticalOptions="End" />
-                        <Button Grid.RowSpan="2" Grid.Column="2" VerticalOptions="End"/>
-                    </Grid>
-
-                </StackLayout>
+                </Grid>
             </Frame>
-
-
-
-
         </Grid>
     </ScrollView>
 

@@ -16,14 +16,14 @@ namespace CiudApp.ViewModels
         #region ProfileViewModel
         public ProfileViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            ConfigurationCommand = new Command(async (page) => await Navigate(page.ToString()));
+            ConfigurationCommand = new Command(async () => await Navigate());
         }
         #endregion
 
         #region Navigate
-        async Task Navigate(string page)
+        async Task Navigate()
         {
-            await NavigationService.NavigateAsync(page);
+            await NavigationService.NavigateAsync(Pages.AccountConfigurationPage);
         }
 
         #endregion

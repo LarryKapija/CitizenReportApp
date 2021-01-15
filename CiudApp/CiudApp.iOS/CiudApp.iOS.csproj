@@ -175,4 +175,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\pin_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pen_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user_picture.png" />
+  </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@
     <TabbedPage.Children>
         <pages:HomePage IconImageSource="Icons/home_icon.png"/>
         <pages:ReportPage IconImageSource="Icons/report_icon.png"/>
-        <pages:ProfilePage IconImageSource="Icons/user_icon.png"/>
+        <pages:AccountConfigurationPage IconImageSource="Icons/user_icon.png"/>
     </TabbedPage.Children>
 
 </TabbedPage>
