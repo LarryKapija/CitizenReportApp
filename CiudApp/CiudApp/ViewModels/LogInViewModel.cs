@@ -4,6 +4,8 @@ using Plugin.GoogleClient.Shared;
 using Prism.Navigation;
 using Prism.Services;
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -17,13 +19,16 @@ namespace CiudApp.ViewModels
         public ICommand LogInCommand { get; }
         public ICommand SignInCommand { get; }
 
+        //public EntryElements NameElement { get; set; }
+        //public EntryElements PasswordElement { get; set; }
+
         internal Models.User user { get; set; }
         
-        public String name;
-        public String Name
+        public string name;
+        public string Name
         {
             get
-            {
+           {
                 return name;
             }
             set
@@ -52,6 +57,9 @@ namespace CiudApp.ViewModels
         #region LogInViewModel
         public LogInViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
+            //NameElement = new EntryElements("Nombre:", "Icons/user_icon.png", "Ingrese su nombre aquí", false);
+            //PasswordElement = new EntryElements("Contraseña:", "Icon/security_icon.png", "Ingrese su contraseña aquí", true);
+
             user = new Models.User();
             GoogleLogIn = new Command(async () => await GoogleCheck());
             LogInCommand = new Command(async () => await LogIn());
@@ -128,12 +136,21 @@ namespace CiudApp.ViewModels
         #region LogIn
         public async Task LogIn()
         {
-            user.Name = Name;
-            NavigationParameters parameter = new NavigationParameters();
-            parameter.Add("user", user);
-            await NavigationService.NavigateAsync($"/{Pages.MainPage}", parameter);
+            if(!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Password))
+            {
+                user.Name = Name;
+                NavigationParameters parameter = new NavigationParameters();
+                parameter.Add("user", user);
+                await NavigationService.NavigateAsync($"/{Pages.MainPage}", parameter);
+            }
+            else
+            {
+                await PageDialog.DisplayAlertAsync("No se puede completar la acción",
+                                             "Necesita completar todos los campos primero", "Ok");
+            }
         }
         #endregion
+
 
         public async Task NavigateTo()
         {

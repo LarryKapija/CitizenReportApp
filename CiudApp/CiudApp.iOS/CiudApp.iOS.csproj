@@ -163,4 +163,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\google.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\security_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\email_icon.png" />
+  </ItemGroup>
 </Project>

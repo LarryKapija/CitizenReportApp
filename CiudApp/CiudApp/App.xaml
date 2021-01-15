@@ -5,11 +5,17 @@
              xmlns:prism="http://prismlibrary.com">
     <Application.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button" x:Key="GoogleCheck">
-                <Setter Property="BackgroundColor" Value="#f14336" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="Margin" Value="0,30" />
+            <Style TargetType="Label" x:Key="PageTitle">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="StartButton">
+                <Setter Property="BackgroundColor" Value="#00ffcb"/>
+                <Setter Property="TextColor" Value="Black" />
                 <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="Margin" Value="0,30" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

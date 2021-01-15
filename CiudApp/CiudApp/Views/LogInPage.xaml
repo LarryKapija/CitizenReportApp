@@ -3,20 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Views="clr-namespace:CiudApp.Views.Views"
              x:Class="CiudApp.Views.LogInPage">
     <ContentPage.Content>
-        <Grid RowDefinitions="*,*,*,*,*,*" Margin="50,0">
-            <Label Text="Iniciar Sesión" FontSize="Large" Grid.Row="0"/>
-            <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}" 
-                    Grid.Row="1" ImageSource="Icons/google.png" Style="{StaticResource GoogleCheck}"/>
+        <Grid RowDefinitions="*,*,*,*,*,*" Margin="50,20">
+            <Label Text="Iniciar Sesión" Grid.Row="0" Style="{StaticResource PageTitle}"/>
+            <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}"
+                    BackgroundColor="#f14336" CornerRadius="25" Margin="0,30" TextColor="White"
+                    Grid.Row="1" ImageSource="Icons/google.png"/>
             <!--<Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="2"/>-->
-            <Views:DataEntry Grid.Row="2" />
-            <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" Grid.Row="3" />
-            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}" Grid.Row="4"/>
-            <Frame Grid.Row="5" HorizontalOptions="Center">
+            <!--<Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" Grid.Row="3" />-->
+            <!--User-->
+            <Grid Grid.Row="2" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Nombre:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+                       HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" 
+                       Source="Icons/user_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+                       HeightRequest="40" Margin="5,10"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                       Placeholder="Ingrese su nombre" Text="{Binding Name}"/>
+            </Grid>
+
+            <!--Password-->
+            <Grid Grid.Row="3" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Contraseña:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+                       HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" 
+                       Source="Icons/security_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+                       HeightRequest="40" Margin="5,10"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                       Placeholder="Ingrese su contraseña" Text="{Binding Password}" IsPassword="True"/>
+            </Grid>
+            
+            <Button Text="Iniciar sesión" Command="{Binding LogInCommand}" Grid.Row="4" Style="{StaticResource StartButton}"/>
+            <Frame Grid.Row="5" HorizontalOptions="Center" BackgroundColor="Transparent">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SignInCommand}" />
                 </Frame.GestureRecognizers>
                 <StackLayout>
-                    <Label Text="¿Olvidaste tu contraseña?" TextColor="Blue"/>
+                    <Label Text="¿No tienes una cuenta?" TextColor="Blue"/>
                     <Label Text="Registrarse" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>

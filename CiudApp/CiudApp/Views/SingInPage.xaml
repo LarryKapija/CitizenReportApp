@@ -3,27 +3,67 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CiudApp.Views.SingInPage">
     <ContentPage.Content>
-        <Grid RowDefinitions="*,*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*">
-            <Label Text="Registrarse" FontSize="Large" Grid.Row="0" Grid.ColumnSpan="2"/>
-            <!--<Button Text="Ingresar con Google" Grid.Row="1" Grid.ColumnSpan="4" />-->
-            <Entry Placeholder="Ingrese su nombre" Text="{Binding Name}" Grid.Row="2" Grid.ColumnSpan="4"/>
-            <Entry Placeholder="Ingrese su contraseña" IsPassword="True" Text="{Binding Password}" 
-                   Grid.Row="3"  Grid.ColumnSpan="4"/>
-            <Entry Placeholder="Confirme su contraseña" IsPassword="True" Text="{Binding ConfirmPassword}"
-                   Grid.Row="4"  Grid.ColumnSpan="4"/>
-            <Entry Placeholder="Ingrese su Correo Eletrónico" Text="{Binding Email}" Grid.Row="5" 
-                   Grid.ColumnSpan="4"/>
-            <CheckBox Grid.Row="6" IsChecked="{Binding IsChecked}" Grid.Column="3" />
-            <Label Text="Usted entiende y acepta los términos y condiciones" Grid.Row="6" Grid.Column="0"
-                   Grid.ColumnSpan="3" VerticalOptions="Center"/>
-            <Button Text="Registrarse" Command="{Binding SingInCommand}" Grid.Row="7" Grid.Column="1"
-                    Grid.ColumnSpan="2"/>
-            <Frame Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
+        <Grid RowDefinitions="*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*" Margin="40,0">
+            <Label Text="Registrarse" FontSize="Large" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource PageTitle}"/>
+            
+            <Grid Grid.Row="1" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Nombre:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+                       HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" 
+                       Source="Icons/user_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+                       HeightRequest="40" Margin="5,10"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                       Placeholder="Ingrese su nombre" Text="{Binding Name}"/>
+            </Grid>
+
+            <!--Password-->
+            <Grid Grid.Row="2" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Contraseña:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+                       HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" 
+                       Source="Icons/security_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+                       HeightRequest="40" Margin="5,10"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                       Placeholder="Ingrese su contraseña" Text="{Binding Password}"/>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Confirmar contraseña:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+                       HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" 
+                       Source="Icons/security_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+                       HeightRequest="40" Margin="5,10"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                       Placeholder="Ingrese su contraseña" Text="{Binding ConfirmPassword}"/>
+            </Grid>
+
+            <!--Email-->
+            <Grid Grid.Row="4" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Email:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
+                       HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" 
+                       Source="Icons/email_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
+                       HeightRequest="40" Margin="5,10"/>
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                       Placeholder="Ingrese su correo electrónico" Text="{Binding Email}"/>
+            </Grid>
+            
+            
+            <CheckBox Grid.Row="5" IsChecked="{Binding IsChecked}" Grid.Column="3" HorizontalOptions="End" />
+            <Label Text="Usted entiende y acepta los términos y condiciones" Grid.Row="5" Grid.Column="0"
+                   Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Text="Registrarse" Command="{Binding SingInCommand}" Grid.Row="6"
+                    Grid.ColumnSpan="4" Margin="10" Style="{StaticResource StartButton}" />
+            <Frame Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="Transparent">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoBackCommand}" />
                 </Frame.GestureRecognizers>
                 <StackLayout>
-                    <Label Text="Ya tienes una cuenta?"  HorizontalOptions="Center"/>
+                    <Label Text="Ya tienes una cuenta?"  HorizontalOptions="Center" TextColor="Blue"/>
                     <Label Text="Iniciar sesión" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>

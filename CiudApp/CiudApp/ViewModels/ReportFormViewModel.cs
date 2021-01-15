@@ -178,28 +178,37 @@ namespace CiudApp.ViewModels
         #region FrameTapped
         private void FrameTapped()
         {
-            bool reportCreated = true;
-            Report report = new Report() 
+
+            if(Image.FullPath != null)
             {
-                Location=" ", 
-                Title=Title, 
-                Subtitle=Subtitle, 
-                Image=Image.FullPath,  
-                Description = "Yo lo que soy un mardito loco"
-            
-            };
-            reportList.Add(report);
+                bool reportCreated = true;
+                Report report = new Report()
+                {
+                    Location = Location,
+                    Title = Title,
+                    Subtitle = Subtitle,
+                    Image = Image.FullPath,
+                    Description = Description
 
-            //Wiping out the elements of the Report view:
-            Title = "";
-            Subtitle = "";
-            Description = "";
+                };
+                reportList.Add(report);
 
-            NavigationParameters parameters = new NavigationParameters();
-            parameters.Add("report", report);
-            parameters.Add("reportCreated", reportCreated);
+                //Wiping out the elements of the Report view:
+                Title = "";
+                Subtitle = "";
+                Description = "";
 
-            NavigationService.GoBackAsync(parameters);
+                NavigationParameters parameters = new NavigationParameters();
+                parameters.Add("report", report);
+                parameters.Add("reportCreated", reportCreated);
+
+                NavigationService.GoBackAsync(parameters);
+            }
+            else
+            {
+                PageDialog.DisplayAlertAsync("No se puede completar el reporte",
+                                             "Debe de agregar un reporte", "Ok");
+            }
             
         }
         #endregion
