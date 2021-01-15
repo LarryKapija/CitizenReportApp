@@ -92,6 +92,7 @@ namespace CiudApp.ViewModels
                 GetNotify(nameof(ImageSource));
             }
         }
+
         public Models.User User { get; set; }
         #endregion
 
@@ -99,10 +100,7 @@ namespace CiudApp.ViewModels
         #region HomeViewModel
         public HomeViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            ReportNumber = 0; //This is for the example, this number should come from the db.
-            //addData();
-
-            // NavegateCommand = new Command(async () => await Navigate());
+            ReportNumber = 0; 
         }
 
 
@@ -132,15 +130,8 @@ namespace CiudApp.ViewModels
             }
             else if (parameters.TryGetValue("report", out Report reports))//GetValue<bool>("reportCreated"))
             {
+                ReportTitle = reports.Title;
                 Report.Add(reports);
-
-                String display = "";
-                //Display all elements of the list.
-                foreach(var element in Report)
-                {
-                    display += $"{element.Title}\n";
-                }
-                PageDialog.DisplayAlertAsync("Elements from de list", display, "Ok");
             }
             else if (parameters.TryGetValue("edit", out edit))
             {

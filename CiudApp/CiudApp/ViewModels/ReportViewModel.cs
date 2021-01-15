@@ -45,14 +45,14 @@ namespace CiudApp.ViewModels
 
         public ICommand NavigationCommand { get; }
 
-        public async Task Navigate()
+        public async Task NavigateTo()
         {
             await NavigationService.NavigateAsync(Pages.ReportForm);
         }
 
         public ReportViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            NavigationCommand = new Command(async () => await Navigate());
+            NavigationCommand = new Command(async () => await NavigateTo());
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

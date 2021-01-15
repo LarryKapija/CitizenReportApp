@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CiudApp.Views.SingInPage">
     <ContentPage.Content>
-        <Grid RowDefinitions="*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*" Margin="40,0">
+        <Grid RowDefinitions="*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*" Margin="40,10">
             <Label Text="Registrarse" FontSize="Large" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource PageTitle}"/>
-            
-            <Grid Grid.Row="1" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="4" RowDefinitions="Auto,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                        Text="Nombre:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
                        HorizontalOptions="Start"/>
@@ -18,30 +18,30 @@
             </Grid>
 
             <!--Password-->
-            <Grid Grid.Row="2" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+            <Grid Grid.Row="2" Grid.ColumnSpan="4" RowDefinitions="Auto,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                        Text="Contraseña:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
                        HorizontalOptions="Start"/>
                 <Image Grid.Row="1" Grid.Column="0" 
                        Source="Icons/security_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
                        HeightRequest="40" Margin="5,10"/>
-                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" IsPassword="True"
                        Placeholder="Ingrese su contraseña" Text="{Binding Password}"/>
             </Grid>
 
-            <Grid Grid.Row="3" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+            <Grid Grid.Row="3" Grid.ColumnSpan="4" RowDefinitions="Auto,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                        Text="Confirmar contraseña:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
                        HorizontalOptions="Start"/>
                 <Image Grid.Row="1" Grid.Column="0" 
                        Source="Icons/security_icon.png" HorizontalOptions="Start" VerticalOptions="Start"
                        HeightRequest="40" Margin="5,10"/>
-                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" 
+                <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" IsPassword="True"
                        Placeholder="Ingrese su contraseña" Text="{Binding ConfirmPassword}"/>
             </Grid>
 
             <!--Email-->
-            <Grid Grid.Row="4" Grid.ColumnSpan="4" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
+            <Grid Grid.Row="4" Grid.ColumnSpan="4" RowDefinitions="Auto,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                        Text="Email:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
                        HorizontalOptions="Start"/>

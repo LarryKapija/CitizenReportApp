@@ -7,98 +7,59 @@
     <ScrollView>
         <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*,*,*" RowSpacing="15" >
 
-            
-            <Label Text="{Binding Title}" VerticalOptions="End" Padding="15,0,0,0" Grid.ColumnSpan="3" FontSize="Title" Margin="0,75,0,10" />
 
-            <Frame Grid.Row="1" Grid.ColumnSpan="3" Padding="50,20" Margin="0,0,0,20">
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout HorizontalOptions="StartAndExpand">
-                        <Label Text="ACTIVIDADES" />
-                        <Label Text="150" HorizontalOptions="Center"/>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="CenterAndExpand">
-                        <Label Text="REPORTES"/>
-                        <Label Text="{Binding ReportNumber}" HorizontalOptions="Center"/>
-                    </StackLayout>
-
-                    <StackLayout HorizontalOptions="EndAndExpand">
-                        <Label Text="COMPARTIR"/>
-                        <Label Text="share" HorizontalOptions="Center"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
+            <Label Text="{Binding Title}" VerticalOptions="End" Padding="15,0,0,0" Grid.ColumnSpan="3" FontSize="Title" />
 
             <CarouselView Margin="0" ItemsSource="{Binding Report}" Loop="False" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" HeightRequest="300" PeekAreaInsets="2">
                 <CarouselView.ItemTemplate>
                     <DataTemplate >
                         <StackLayout>
-                            <Label Text="Estado del último reporte" FontSize="Large"/>
+                            <Label Text="Ultimos reporte" FontSize="Large" Margin="10"/>
                             <Frame 
                             BackgroundColor="White" Padding="0"
                             HeightRequest="280" WidthRequest="280"
                             HasShadow="True" Margin="10" CornerRadius="10"
                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                
+
                                 <Grid 
                                 RowDefinitions="*,*,*" >
 
-                                <StackLayout
+                                    <StackLayout
                                     Grid.RowSpan="3"
                                     BackgroundColor="Black"  >
 
-                                    <Image
+                                        <Image
                                         Opacity="0.6"
                                         HeightRequest="350" 
                                         Aspect="AspectFill"
                                         Source="{Binding Image}" />
 
-                                </StackLayout>
+                                    </StackLayout>
 
-                                <Frame 
+                                    <Frame 
                                     Grid.Row="1"
                                     Opacity="0.6"
                                     CornerRadius="40"
                                     VerticalOptions="Start"
                                     BackgroundColor="#00FFCB" >
 
-                                    <Label Text="{Binding Title}" 
+                                        <Label Text="{Binding ReportTitle}" 
                                            Margin="15,0"
                                            FontSize="18"
                                            TextColor="Black" 
                                            FontAttributes="None" 
                                            HorizontalOptions="Center"
                                            VerticalOptions="CenterAndExpand" />
-                                </Frame>
-                            </Grid>
-                        </Frame>
+                                    </Frame>
+                                </Grid>
+                            </Frame>
                         </StackLayout>
 
 
-                        
+
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
-            
-            <Frame Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3">
-                <StackLayout>
-                    <Label Text="Proximos Eventos" FontSize="Subtitle" />
-                    <ListView x:Name="Eventos" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ImageCell 
-                                    
-                                    Height="50" 
-                                    Text="" 
-                                    Detail="" 
-                                    ImageSource="" >
-
-                                </ImageCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </Frame>
 
         </Grid>
 

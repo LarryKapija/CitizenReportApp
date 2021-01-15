@@ -118,6 +118,7 @@ namespace CiudApp.ViewModels
         public ReportFormViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
             IsEnable = false;
+            Image = new FileResult("user_picture.png");
             GetLocationCommand = new Command(async () => await Navigate());
             ImageCommand = new Command(async () => await AddPhoto());
             FrameCommand = new Command(FrameTapped);
@@ -179,7 +180,7 @@ namespace CiudApp.ViewModels
         private void FrameTapped()
         {
 
-            if(Image.FullPath != null)
+            if(Image.FullPath != "user_picture.png") //if it's different to the default image
             {
                 bool reportCreated = true;
                 Report report = new Report()
@@ -193,6 +194,9 @@ namespace CiudApp.ViewModels
                 };
                 reportList.Add(report);
 
+                PageDialog.DisplayAlertAsync("El reporte ha sido creado exitosamente.",
+                                             "", "Ok");
+
                 //Wiping out the elements of the Report view:
                 Title = "";
                 Subtitle = "";
@@ -202,12 +206,12 @@ namespace CiudApp.ViewModels
                 parameters.Add("report", report);
                 parameters.Add("reportCreated", reportCreated);
 
-                NavigationService.SelectTabAsync(Pages.HomePage, parameters);
+                NavigationService.GoBackAsync(parameters);
             }
             else
             {
                 PageDialog.DisplayAlertAsync("No se puede completar el reporte",
-                                             "Debe de agregar un reporte", "Ok");
+                                             "Debe de agregar una imagen", "Ok");
             }
             
         }

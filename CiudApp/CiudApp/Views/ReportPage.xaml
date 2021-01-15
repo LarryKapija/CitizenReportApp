@@ -8,7 +8,7 @@
     <Grid ColumnDefinitions="*,*">
 
 
-        <CarouselView
+        <CarouselView Grid.Row="0"
             Grid.ColumnSpan="2"
             Loop="False"
             ItemsSource="{Binding Report}" >
@@ -37,7 +37,7 @@
                                     <StackLayout Orientation="Horizontal"  Margin="15,-8,0,0">
 
                                         <Label 
-                                            Text="{Binding Detail}" 
+                                            Text="{Binding Description}" 
                                             TextColor="White" 
                                             FontSize="14"
                                             FontAttributes="None"
@@ -52,6 +52,7 @@
         </CarouselView>
 
         <Button 
+            Text="Crear Reporte"
             Grid.Column="1"
             Command="{Binding NavigationCommand}" 
             HorizontalOptions="EndAndExpand" 
