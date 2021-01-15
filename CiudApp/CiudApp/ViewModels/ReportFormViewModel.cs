@@ -202,7 +202,7 @@ namespace CiudApp.ViewModels
                 parameters.Add("report", report);
                 parameters.Add("reportCreated", reportCreated);
 
-                NavigationService.GoBackAsync(parameters);
+                NavigationService.SelectTabAsync(Pages.HomePage, parameters);
             }
             else
             {

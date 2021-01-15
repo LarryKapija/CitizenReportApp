@@ -123,6 +123,7 @@ namespace CiudApp.ViewModels
         #region OnNavigatedTo
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            bool edit;
 
             if (parameters.TryGetValue("user", out Models.User user))
             {
@@ -140,6 +141,15 @@ namespace CiudApp.ViewModels
                     display += $"{element.Title}\n";
                 }
                 PageDialog.DisplayAlertAsync("Elements from de list", display, "Ok");
+            }
+            else if (parameters.TryGetValue("edit", out edit))
+            {
+                User.Name = parameters.GetValue<string>("name");
+                User.Email = parameters.GetValue<string>("email");
+                User.PhoneNumber = parameters.GetValue<string>("phone");
+                User.WebSite = parameters.GetValue<string>("webSite");
+                User.Description = parameters.GetValue<string>("description");
+                User.Address = parameters.GetValue<string>("address");
             }
 
         }

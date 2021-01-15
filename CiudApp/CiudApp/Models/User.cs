@@ -15,6 +15,11 @@ namespace CiudApp.Models
 
         public string Password { get; set; }
         public int ReportCount { get; set; }
+
+        public string PhoneNumber { get; set; }
+        public string WebSite { get; set; }
+        public string Description { get; set; }
+        public string Address { get; set; }
         //public IList<Report> ReportList {get; set;}
         //public int EventCount {get; set;}
     }

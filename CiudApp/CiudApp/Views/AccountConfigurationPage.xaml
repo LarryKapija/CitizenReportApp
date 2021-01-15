@@ -43,19 +43,19 @@
                 <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*">
                     <Label Text="Nombre de usuario" Grid.Row="0" Grid.ColumnSpan="2"
                            Style="{StaticResource InformationTitle}"  />
-                    <Entry Text="Pedro Abinader" Grid.Row="1" Style="{StaticResource InformationEntry}"/>
+                    <Entry Text="{Binding Name}" Grid.Row="1" Style="{StaticResource InformationEntry}"/>
                     <Image Style="{StaticResource PencilIcon}" 
                            Grid.Row="1" Grid.Column="2"/>
 
                     <Label Text="Correo electrónico" Grid.Row="2" Grid.ColumnSpan="2"
                            Style="{StaticResource InformationTitle}"  />
-                    <Entry Text="example@mail.com" Grid.Row="3" Style="{StaticResource InformationEntry}"/>
+                    <Entry Text="{Binding Email}" Grid.Row="3" Style="{StaticResource InformationEntry}"/>
                     <Image Style="{StaticResource PencilIcon}" 
                            Grid.Row="3" Grid.Column="2"/>
 
                     <Label Text="Número de teléfono" Grid.Row="4" Grid.ColumnSpan="2"
                            Style="{StaticResource InformationTitle}"  />
-                    <Entry Text="829-888-8888" Grid.Row="5" Style="{StaticResource InformationEntry}"/>
+                    <Entry Text="{Binding Phone}" Grid.Row="5" Style="{StaticResource InformationEntry}"/>
                     <Image Style="{StaticResource PencilIcon}" 
                            Grid.Row="5" Grid.Column="2"/>
 
@@ -68,19 +68,19 @@
                 <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*">
                     <Label Text="Sitio web" Grid.Row="0" Grid.ColumnSpan="2"
                            Style="{StaticResource InformationTitle}"  />
-                    <Entry Text="www.misitio.com" Grid.Row="1" Style="{StaticResource InformationEntry}"/>
+                    <Entry Text="{Binding WebSite}" Grid.Row="1" Style="{StaticResource InformationEntry}"/>
                     <Image Style="{StaticResource PencilIcon}" 
                            Grid.Row="1" Grid.Column="2"/>
 
                     <Label Text="Presentación" Grid.Row="2" Grid.ColumnSpan="2"
                            Style="{StaticResource InformationTitle}"  />
-                    <Entry Text="Soy un tipo bueno" Grid.Row="3" Style="{StaticResource InformationEntry}"/>
+                    <Entry Text="{Binding Description}" Grid.Row="3" Style="{StaticResource InformationEntry}"/>
                     <Image Style="{StaticResource PencilIcon}" 
                            Grid.Row="3" Grid.Column="2"/>
 
                     <Label Text="Dirección" Grid.Row="4" Grid.ColumnSpan="2"
                            Style="{StaticResource InformationTitle}"  />
-                    <Entry Text="Mi casa" Grid.Row="5" Style="{StaticResource InformationEntry}"/>
+                    <Entry Text="{Binding Address}" Grid.Row="5" Style="{StaticResource InformationEntry}"/>
                     <Image Style="{StaticResource PencilIcon}" 
                            Grid.Row="5" Grid.Column="2"/>
 

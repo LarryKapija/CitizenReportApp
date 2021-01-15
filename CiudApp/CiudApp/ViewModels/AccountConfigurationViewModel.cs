@@ -1,4 +1,6 @@
-﻿using Prism.Navigation;
+﻿using CiudApp.Models;
+using Prism.Navigation;
+using Prism.Navigation.TabbedPages;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,8 @@ namespace CiudApp.ViewModels
     {
         #region Commands and Attributes:
         public ICommand ImageCommand { get; set; }
+
+        public ICommand SaveCommand { get; set; }
 
         public string image;
         public string Image
@@ -31,6 +35,94 @@ namespace CiudApp.ViewModels
         }
 
         private FileResult ImageFile { get; set; }
+
+        public string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+                GetNotify(nameof(Name));
+            }
+        }
+
+        public string email;
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            set
+            {
+                email = value;
+                GetNotify(nameof(Email));
+            }
+        }
+
+        public string phone;
+        public String Phone
+        {
+            get
+            {
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
+                GetNotify(nameof(Phone));
+            }
+        }
+
+        public string webSite;
+        public string WebSite
+        {
+            get
+            {
+                return webSite;
+            }
+
+            set
+            {
+                webSite = value;
+                GetNotify(nameof(WebSite));
+            }
+        }
+
+        public string description;
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+                GetNotify(nameof(Description));
+            }
+        }
+
+        public string address;
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+                GetNotify(nameof(Address));
+            }
+        }
         #endregion
 
         //Functions:
@@ -40,6 +132,7 @@ namespace CiudApp.ViewModels
         {
             Image = "user_picture.png";
             ImageCommand = new Command(async () => await AddPhoto());
+            SaveCommand = new Command(async () => await NavigateTo());
         }
         #endregion
 
@@ -83,6 +176,20 @@ namespace CiudApp.ViewModels
             Image = ImageFile.FullPath;
         }
         #endregion
+
+        public async Task NavigateTo()
+        {
+            NavigationParameters parameter = new NavigationParameters();
+            parameter.Add("name", Name);
+            parameter.Add("email", Email);
+            parameter.Add("phone", Phone);
+            parameter.Add("webSite", WebSite);
+            parameter.Add("description", Description);
+            parameter.Add("address", Address);
+            parameter.Add("edit", true);
+
+            await NavigationService.SelectTabAsync(Pages.HomePage, parameter);
+        }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
