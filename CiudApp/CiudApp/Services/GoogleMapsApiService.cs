@@ -11,7 +11,7 @@ namespace CiudApp.Services
 {
     public class GoogleMapsApiService : IGoogleMapsApiService
     {
-        static string googleMapsKey;
+        static string googleMapsKey = "AIzaSyAY96XSimoWFynos8MMtzNRLVGeFwUCHCQ";
         private const string ApiBaseAddress = "https://maps.googleapis.com/maps/";
 
         private HttpClient CreateClient()

@@ -43,7 +43,7 @@
                                     VerticalOptions="Start"
                                     BackgroundColor="#00FFCB" >
 
-                                        <Label Text="{Binding ReportTitle}" 
+                                        <Label Text="{Binding Title}" 
                                            Margin="15,0"
                                            FontSize="18"
                                            TextColor="Black" 

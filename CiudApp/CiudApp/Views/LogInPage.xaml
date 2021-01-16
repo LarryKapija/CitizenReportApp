@@ -8,9 +8,7 @@
             <Button Text="Ingresar con Google" Command="{Binding GoogleLogIn}"
                     BackgroundColor="#f14336" CornerRadius="25" Margin="0,20" TextColor="White"
                     Grid.Row="1" ImageSource="Icons/google.png"/>
-            <!--<Entry Placeholder="Nombre" Text="{Binding Name}" Grid.Row="2"/>-->
-            <!--<Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" Grid.Row="3" />-->
-            <!--User-->
+
             <Grid Grid.Row="2" RowDefinitions="*,*" ColumnDefinitions="40,*,*" RowSpacing="10" >
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                        Text="Nombre:" FontSize="Small" TextColor="#8f92a1"  VerticalOptions="End"
